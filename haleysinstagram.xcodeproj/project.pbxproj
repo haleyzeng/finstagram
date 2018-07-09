@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		22701B70EF549B99129E4702 /* libPods-haleysinstagram.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7CE8F9354FBDF878477126 /* libPods-haleysinstagram.a */; };
 		5DF15A0F20F412CE00498856 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A0E20F412CE00498856 /* AppDelegate.m */; };
-		5DF15A1220F412CE00498856 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A1120F412CE00498856 /* ViewController.m */; };
 		5DF15A1520F412CE00498856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF15A1320F412CE00498856 /* Main.storyboard */; };
 		5DF15A1720F412CE00498856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DF15A1620F412CE00498856 /* Assets.xcassets */; };
 		5DF15A1A20F412CE00498856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF15A1820F412CE00498856 /* LaunchScreen.storyboard */; };
 		5DF15A1D20F412CE00498856 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A1C20F412CE00498856 /* main.m */; };
 		5DF15A2720F412CF00498856 /* haleysinstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A2620F412CF00498856 /* haleysinstagramTests.m */; };
 		5DF15A3220F412CF00498856 /* haleysinstagramUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A3120F412CF00498856 /* haleysinstagramUITests.m */; };
+		5DF15A4120F4174900498856 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A4020F4174900498856 /* LoginViewController.m */; };
+		5DF15A4420F4176A00498856 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A4320F4176A00498856 /* FeedViewController.m */; };
+		5DF15A4720F4191C00498856 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A4620F4191C00498856 /* SignUpViewController.m */; };
 		8468D2004FE6E1EC604F4D02 /* libPods-haleysinstagramTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A19A720F081735CB60E59D4B /* libPods-haleysinstagramTests.a */; };
 		C32B2581EB0E493183608A7A /* libPods-haleysinstagramUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB58DF30BE0E1DEAAEA8A730 /* libPods-haleysinstagramUITests.a */; };
 /* End PBXBuildFile section */
@@ -44,8 +46,6 @@
 		5DF15A0A20F412CE00498856 /* haleysinstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haleysinstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF15A0D20F412CE00498856 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5DF15A0E20F412CE00498856 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5DF15A1020F412CE00498856 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5DF15A1120F412CE00498856 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5DF15A1420F412CE00498856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DF15A1620F412CE00498856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DF15A1920F412CE00498856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +57,12 @@
 		5DF15A2D20F412CF00498856 /* haleysinstagramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = haleysinstagramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF15A3120F412CF00498856 /* haleysinstagramUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = haleysinstagramUITests.m; sourceTree = "<group>"; };
 		5DF15A3320F412CF00498856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5DF15A3F20F4174900498856 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5DF15A4020F4174900498856 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		5DF15A4220F4176A00498856 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		5DF15A4320F4176A00498856 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		5DF15A4520F4191C00498856 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		5DF15A4620F4191C00498856 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		82A873501E731F0486022251 /* Pods-haleysinstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haleysinstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-haleysinstagram/Pods-haleysinstagram.release.xcconfig"; sourceTree = "<group>"; };
 		8C7CE8F9354FBDF878477126 /* libPods-haleysinstagram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haleysinstagram.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19A720F081735CB60E59D4B /* libPods-haleysinstagramTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haleysinstagramTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,13 +126,17 @@
 			children = (
 				5DF15A0D20F412CE00498856 /* AppDelegate.h */,
 				5DF15A0E20F412CE00498856 /* AppDelegate.m */,
-				5DF15A1020F412CE00498856 /* ViewController.h */,
-				5DF15A1120F412CE00498856 /* ViewController.m */,
 				5DF15A1320F412CE00498856 /* Main.storyboard */,
 				5DF15A1620F412CE00498856 /* Assets.xcassets */,
 				5DF15A1820F412CE00498856 /* LaunchScreen.storyboard */,
 				5DF15A1B20F412CE00498856 /* Info.plist */,
 				5DF15A1C20F412CE00498856 /* main.m */,
+				5DF15A3F20F4174900498856 /* LoginViewController.h */,
+				5DF15A4020F4174900498856 /* LoginViewController.m */,
+				5DF15A4220F4176A00498856 /* FeedViewController.h */,
+				5DF15A4320F4176A00498856 /* FeedViewController.m */,
+				5DF15A4520F4191C00498856 /* SignUpViewController.h */,
+				5DF15A4620F4191C00498856 /* SignUpViewController.m */,
 			);
 			path = haleysinstagram;
 			sourceTree = "<group>";
@@ -381,9 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DF15A1220F412CE00498856 /* ViewController.m in Sources */,
 				5DF15A1D20F412CE00498856 /* main.m in Sources */,
+				5DF15A4720F4191C00498856 /* SignUpViewController.m in Sources */,
 				5DF15A0F20F412CE00498856 /* AppDelegate.m in Sources */,
+				5DF15A4420F4176A00498856 /* FeedViewController.m in Sources */,
+				5DF15A4120F4174900498856 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

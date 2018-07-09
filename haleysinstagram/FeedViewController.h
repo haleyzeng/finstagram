@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FeedViewController.h
 //  haleysinstagram
 //
 //  Created by Haley Zeng on 7/9/18.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface FeedViewController : UIViewController
 
 @end
-
