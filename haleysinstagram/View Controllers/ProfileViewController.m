@@ -14,7 +14,7 @@
 #import "DetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 
-@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -25,26 +25,29 @@
 
 @implementation ProfileViewController
 
+#pragma mark - Load View
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-
-    [self collectionViewCellSize];
-    MyUser *user = MyUser.currentUser;
-    self.userProfile = user;
-    [self profilePicture];
-    self.usernameLabel.text = self.userProfile.username;
-    [self fetchProfilePosts];
-    // Do any additional setup after loading the view.
+    [self setupView];
 }
 
-- (void)profilePicture {
-    NSLog(@"profile: %@", self.userProfile);
-    NSLog(@"profile: %@", MyUser.currentUser);
+- (void)setupView {
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
+    [self adjustCollectionViewCellSize];
+    
+    self.userProfile = MyUser.currentUser;
+    [self putProfilePicture];
+    self.usernameLabel.text = self.userProfile.username;
+    
+    [self fetchProfilePosts];
+}
+
+- (void)putProfilePicture {
     NSURL *profilePhotoURL = [NSURL URLWithString:self.userProfile.profileImage.url];
     NSURLRequest *profilePicRequest = [NSURLRequest requestWithURL:profilePhotoURL];
-    NSLog(@"profile url: %@", profilePhotoURL);
     __weak ProfileViewController *weakSelf = self;
     [self.profileImageView setImageWithURLRequest:profilePicRequest placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
         // imageResponse will be nil if the image is cached
@@ -52,7 +55,6 @@
             weakSelf.profileImageView.alpha = 0.0;
             weakSelf.profileImageView.image = image;
             
-            //Animate UIImageView back to alpha 1 over 0.3sec
             [UIView animateWithDuration:0.3 animations:^{
                 weakSelf.profileImageView.alpha = 1.0;
             }];
@@ -62,6 +64,21 @@
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
 
+}
+
+- (void)adjustCollectionViewCellSize {
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    
+    CGFloat imagesPerRow = 3;
+    CGFloat width = self.collectionView.frame.size.width;
+    CGFloat itemWidth = (width - (layout.minimumInteritemSpacing * (imagesPerRow - 1))) / imagesPerRow;
+    
+    CGFloat itemHeight = itemWidth;
+    
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
 - (void)fetchProfilePosts {
@@ -81,21 +98,6 @@
     }];
 }
 
-- (void)collectionViewCellSize {
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    
-    layout.minimumLineSpacing = 0;
-    layout.minimumInteritemSpacing = 0;
-    
-    CGFloat imagesPerRow = 3;
-    CGFloat width = self.collectionView.frame.size.width;
-    CGFloat itemWidth = (width - (layout.minimumInteritemSpacing * (imagesPerRow - 1))) / imagesPerRow;
-    
-    CGFloat itemHeight = itemWidth;
-    
-    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-}
-
 #pragma mark - UICollectionViewDelegate
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -107,6 +109,57 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.posts.count;
+}
+
+#pragma mark - Tap Gesture
+
+- (IBAction)didTapProfileImage:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    
+    // create action sheet style alert so user can pick
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Change profile picture" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    // if camera is available, add the option to action sheet
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+         UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Take a photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            // open camera
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:imagePickerVC animated:YES completion:nil];
+        }];
+         [alert addAction:camera];
+     }
+    
+    UIAlertAction *library = [UIAlertAction actionWithTitle:@"Choose from library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // open photo library
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
+        }];
+        
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    
+    [alert addAction:library];
+    [alert addAction:cancel];
+        
+    [self presentViewController:alert animated:YES completion:^{}];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    // get image
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    PFFile *newProfileImage = [MyUser getPFFileFromImage:editedImage];
+    MyUser.currentUser.profileImage = newProfileImage;
+    [MyUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error != nil) {
+            [ErrorAlert getErrorAlertWithTitle:@"Error saving new profile picture" withMessage:error.localizedDescription];
+        }
+        else {
+            [self setupView];
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+   
 }
 
 

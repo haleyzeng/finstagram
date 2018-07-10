@@ -447,7 +447,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="saK-eG-gUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="DWY-sn-R0N"/>
+                <tapGestureRecognizer id="DWY-sn-R0N">
+                    <connections>
+                        <action selector="didTapProfileImage:" destination="5rd-0l-yDg" id="enJ-uw-HG5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4228" y="1000.7496251874064"/>
         </scene>
