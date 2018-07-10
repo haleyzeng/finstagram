@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,32 +24,44 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InstagramCell" rowHeight="494" id="dyf-6S-1za" customClass="InstagramCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="494"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InstagramCell" rowHeight="455" id="dyf-6S-1za" customClass="InstagramCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="455"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dyf-6S-1za" id="Q0b-o0-zc7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="493.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="454.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I3s-BU-89A">
-                                                    <rect key="frame" x="0.0" y="41" width="375" height="375"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I3s-BU-89A">
+                                                    <rect key="frame" x="0.0" y="40" width="375" height="375"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="I3s-BU-89A" secondAttribute="height" multiplier="1:1" id="pUn-Nq-b7i"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yE9-jV-szx">
-                                                    <rect key="frame" x="15" y="424" width="345" height="59"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yE9-jV-szx">
+                                                    <rect key="frame" x="15" y="423" width="59.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Yq-BTb">
-                                                    <rect key="frame" x="15" y="11" width="79" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Yq-BTb">
+                                                    <rect key="frame" x="15" y="11" width="345" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="I3s-BU-89A" firstAttribute="top" secondItem="fJ1-Yq-BTb" secondAttribute="bottom" constant="8" id="0nh-Fl-3EX"/>
+                                                <constraint firstItem="I3s-BU-89A" firstAttribute="leading" secondItem="Q0b-o0-zc7" secondAttribute="leading" id="6SF-tm-O1i"/>
+                                                <constraint firstItem="yE9-jV-szx" firstAttribute="leading" secondItem="Q0b-o0-zc7" secondAttribute="leading" constant="15" id="CmE-BG-or7"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yE9-jV-szx" secondAttribute="trailing" constant="15" id="DHZ-6N-U7L"/>
+                                                <constraint firstAttribute="bottom" secondItem="yE9-jV-szx" secondAttribute="bottom" constant="11" id="WxG-1f-lUW"/>
+                                                <constraint firstAttribute="trailing" secondItem="fJ1-Yq-BTb" secondAttribute="trailing" constant="15" id="dAf-Vw-n6g"/>
+                                                <constraint firstAttribute="trailing" secondItem="I3s-BU-89A" secondAttribute="trailing" id="fqO-ov-R8e"/>
+                                                <constraint firstItem="fJ1-Yq-BTb" firstAttribute="leading" secondItem="Q0b-o0-zc7" secondAttribute="leading" constant="15" id="jqs-JN-Hoi"/>
+                                                <constraint firstItem="yE9-jV-szx" firstAttribute="top" secondItem="I3s-BU-89A" secondAttribute="bottom" constant="8" id="llB-Yy-Cwf"/>
+                                                <constraint firstItem="fJ1-Yq-BTb" firstAttribute="top" secondItem="Q0b-o0-zc7" secondAttribute="top" constant="11" id="onb-D4-kSH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="yE9-jV-szx" id="tdE-0Z-0u3"/>
