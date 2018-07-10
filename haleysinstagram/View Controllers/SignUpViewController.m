@@ -25,16 +25,7 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)showErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
+#pragma mark - Manual Segue
 
 - (IBAction)didTapSignUpButton:(id)sender {
     NSString *username = self.usernameTextField.text;
@@ -62,10 +53,21 @@
     }
 }
 
+- (void)showErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 - (IBAction)didTapGoToLoginButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
+
+#pragma mark - Memory Warning
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

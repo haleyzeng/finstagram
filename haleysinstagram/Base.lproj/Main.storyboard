@@ -65,7 +65,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="jDr-wD-xdp">
                             <connections>
-                                <segue destination="KlJ-5L-6hX" kind="presentation" id="cHW-Az-YUe"/>
+                                <action selector="didTapNewPostButton:" destination="l54-Sn-emk" id="Iix-0L-lvH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,14 +94,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jI-g3-ZfA">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5jI-g3-ZfA">
                                 <rect key="frame" x="16" y="78" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="5eo-rz-0Xl" appends="YES" id="PIO-a6-Xna"/>
-                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,15 +117,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="composeCaptionTextView" destination="W9L-dj-quS" id="2np-IT-lsn"/>
-                        <outlet property="composeImageView" destination="5jI-g3-ZfA" id="RRx-wt-Sse"/>
+                        <outlet property="composeImageView" destination="5jI-g3-ZfA" id="7uo-Hc-caa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R14-B2-zdt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="5eo-rz-0Xl">
-                    <connections>
-                        <action selector="didTapComposeImageView:" destination="1fd-A7-E0S" id="X70-FK-hfp"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5014" y="100"/>
         </scene>
@@ -269,7 +260,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OxD-Mn-gc7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KlJ-5L-6hX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ComposeViewController" automaticallyAdjustsScrollViewInsets="NO" id="KlJ-5L-6hX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2DV-LX-heY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

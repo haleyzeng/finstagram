@@ -108,6 +108,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D5B003620F4797400274E1C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5DF15A3F20F4174900498856 /* LoginViewController.h */,
+				5DF15A4020F4174900498856 /* LoginViewController.m */,
+				5DF15A4220F4176A00498856 /* FeedViewController.h */,
+				5DF15A4320F4176A00498856 /* FeedViewController.m */,
+				5DF15A4520F4191C00498856 /* SignUpViewController.h */,
+				5DF15A4620F4191C00498856 /* SignUpViewController.m */,
+				5D670DA220F42F0C00144D81 /* ComposeViewController.h */,
+				5D670DA320F42F0C00144D81 /* ComposeViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5D5B003720F4798B00274E1C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5DF15A4820F42C8D00498856 /* InstagramCell.h */,
+				5DF15A4920F42C8D00498856 /* InstagramCell.m */,
+				5D670DAB20F43A2A00144D81 /* Post.h */,
+				5D670DAC20F43A2A00144D81 /* Post.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		5DF15A0120F412CE00498856 = {
 			isa = PBXGroup;
 			children = (
@@ -133,25 +159,15 @@
 		5DF15A0C20F412CE00498856 /* haleysinstagram */ = {
 			isa = PBXGroup;
 			children = (
+				5D5B003620F4797400274E1C /* View Controllers */,
+				5D5B003720F4798B00274E1C /* Models */,
+				5DF15A1320F412CE00498856 /* Main.storyboard */,
+				5DF15A1820F412CE00498856 /* LaunchScreen.storyboard */,
 				5DF15A0D20F412CE00498856 /* AppDelegate.h */,
 				5DF15A0E20F412CE00498856 /* AppDelegate.m */,
-				5DF15A1320F412CE00498856 /* Main.storyboard */,
 				5DF15A1620F412CE00498856 /* Assets.xcassets */,
-				5DF15A1820F412CE00498856 /* LaunchScreen.storyboard */,
 				5DF15A1B20F412CE00498856 /* Info.plist */,
 				5DF15A1C20F412CE00498856 /* main.m */,
-				5DF15A3F20F4174900498856 /* LoginViewController.h */,
-				5DF15A4020F4174900498856 /* LoginViewController.m */,
-				5DF15A4220F4176A00498856 /* FeedViewController.h */,
-				5DF15A4320F4176A00498856 /* FeedViewController.m */,
-				5DF15A4520F4191C00498856 /* SignUpViewController.h */,
-				5DF15A4620F4191C00498856 /* SignUpViewController.m */,
-				5DF15A4820F42C8D00498856 /* InstagramCell.h */,
-				5DF15A4920F42C8D00498856 /* InstagramCell.m */,
-				5D670DA220F42F0C00144D81 /* ComposeViewController.h */,
-				5D670DA320F42F0C00144D81 /* ComposeViewController.m */,
-				5D670DAB20F43A2A00144D81 /* Post.h */,
-				5D670DAC20F43A2A00144D81 /* Post.m */,
 			);
 			path = haleysinstagram;
 			sourceTree = "<group>";

@@ -35,6 +35,8 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+#pragma mark - Manual Segue
+
 - (IBAction)didTapLogin:(id)sender {
     NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
@@ -60,6 +62,8 @@
     [self performSegueWithIdentifier:@"goToSignUpViewSegue" sender:nil];
 }
 
+
+#pragma mark - Memory Warning
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
