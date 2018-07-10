@@ -59,7 +59,7 @@
 #pragma mark - Bar Button Functionality
 
 - (IBAction)didTapBack:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Memory Warning

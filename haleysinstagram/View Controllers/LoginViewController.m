@@ -10,6 +10,7 @@
 
 #import <Parse/Parse.h>
 #import "ErrorAlert.h"
+#import "MyUser.h"
 
 
 @interface LoginViewController ()
@@ -39,7 +40,7 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * _Nullable user, NSError * _Nullable error) {
+        [MyUser logInWithUsernameInBackground:username password:password block:^(PFUser * _Nullable user, NSError * _Nullable error) {
             if (error != nil) {
                 UIAlertController *alert = [ErrorAlert
                  getErrorAlertWithTitle:@"Error Logging In"

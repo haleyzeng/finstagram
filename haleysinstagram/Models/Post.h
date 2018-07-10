@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
+#import "MyUser.h"
+
 @interface Post : PFObject <PFSubclassing>
 
-
-@property (nonatomic, strong) PFUser *author;
-@property (nonatomic, strong) NSString *caption;
-@property (nonatomic, strong) PFFile *image;
+@property (nonatomic, strong) MyUser * _Nullable author;
+@property (nonatomic, strong) NSString * _Nullable caption;
+@property (nonatomic, strong) PFFile * _Nullable image;
 //@property (nonatomic, strong) NSString *absoluteCreatedAtDate;
-@property (nonatomic, strong) NSNumber *likeCount;
-@property (nonatomic, strong) NSNumber *commentCount;
+@property (nonatomic, strong) NSNumber * _Nullable likeCount;
+@property (nonatomic, strong) NSNumber * _Nullable commentCount;
 
 + (void)postUserImage:(UIImage * _Nullable)image
           withCaption:(NSString * _Nullable)caption

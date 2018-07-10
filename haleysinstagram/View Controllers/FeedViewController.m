@@ -96,7 +96,7 @@
 
 - (IBAction)didTapLogout:(id)sender {
     
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+    [MyUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil) {
             UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error logging out" withMessage:error.localizedDescription];
             [self presentViewController:alert animated:YES completion:nil];
@@ -139,9 +139,8 @@
             imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self presentViewController:imagePickerVC animated:YES completion:nil];
         }];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:alert completion:nil];
-        }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
         
         [alert addAction:camera];
         [alert addAction:library];
@@ -169,9 +168,11 @@
     composeViewController.image = editedImage;
     
     // dismiss picker and present compose view
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self presentViewController:composeNavigationController animated:YES completion:^{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:composeNavigationController animated:YES completion:^{
+        }];
     }];
+   
 }
 
 #pragma mark - Memory Warning
@@ -189,8 +190,7 @@
      if ([segue.identifier isEqualToString:@"goToDetailViewSegue"]) {
          InstagramCell *tappedCell = sender;
          Post *post = tappedCell.post;
-         UINavigationController *navigationViewController = [segue destinationViewController];
-         DetailViewController *detailViewController = (DetailViewController *) navigationViewController.topViewController;
+        DetailViewController *detailViewController = [segue destinationViewController];
          detailViewController.post = post;
      }
  // Get the new view controller using [segue destinationViewController].

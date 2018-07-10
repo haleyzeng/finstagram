@@ -21,8 +21,8 @@
     
     self.usernameLabel.text = self.post.author.username;
     self.captionLabel.text = self.post.caption;
-    NSLog(@"image url: %@", self.post.image.url);
- //   [self.photoImageView
+
+    // set post's photo imageview
     NSURL *photoURL = [NSURL URLWithString:self.post.image.url];
     NSURLRequest *request = [NSURLRequest requestWithURL:photoURL];
     __weak InstagramCell *weakSelf = self;
@@ -39,6 +39,25 @@
         }
         else {
             weakSelf.photoImageView.image = image;
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
+    
+    // set post's user's profile icon imageview
+    NSURL *profilePhotoURL = [NSURL URLWithString:self.post.author.profileImage.url];
+    NSURLRequest *profilePicRequest = [NSURLRequest requestWithURL:profilePhotoURL];;
+    [self.profileImageView setImageWithURLRequest:profilePicRequest placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+        // imageResponse will be nil if the image is cached
+        if (imageResponse) {
+            weakSelf.profileImageView.alpha = 0.0;
+            weakSelf.profileImageView.image = image;
+            
+            //Animate UIImageView back to alpha 1 over 0.3sec
+            [UIView animateWithDuration:0.3 animations:^{
+                weakSelf.profileImageView.alpha = 1.0;
+            }];
+        }
+        else {
+            weakSelf.profileImageView.image = image;
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
 }

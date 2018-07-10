@@ -12,6 +12,10 @@
 		5D670DA420F42F0C00144D81 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D670DA320F42F0C00144D81 /* ComposeViewController.m */; };
 		5D670DAD20F43A2A00144D81 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D670DAC20F43A2A00144D81 /* Post.m */; };
 		5D8180A320F525BA00C18103 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180A220F525BA00C18103 /* DetailViewController.m */; };
+		5D8180A920F5359F00C18103 /* MyUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180A820F5359F00C18103 /* MyUser.m */; };
+		5D8180AB20F5397700C18103 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8180AA20F5397700C18103 /* default.png */; };
+		5D8180AE20F5559F00C18103 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180AD20F5559F00C18103 /* ProfileViewController.m */; };
+		5D8180B120F5567F00C18103 /* ProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180B020F5567F00C18103 /* ProfileCollectionViewCell.m */; };
 		5DF15A0F20F412CE00498856 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A0E20F412CE00498856 /* AppDelegate.m */; };
 		5DF15A1520F412CE00498856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF15A1320F412CE00498856 /* Main.storyboard */; };
 		5DF15A1720F412CE00498856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DF15A1620F412CE00498856 /* Assets.xcassets */; };
@@ -56,6 +60,13 @@
 		5D670DAC20F43A2A00144D81 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		5D8180A120F525BA00C18103 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		5D8180A220F525BA00C18103 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		5D8180A720F5359F00C18103 /* MyUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyUser.h; sourceTree = "<group>"; };
+		5D8180A820F5359F00C18103 /* MyUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyUser.m; sourceTree = "<group>"; };
+		5D8180AA20F5397700C18103 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = SOURCE_ROOT; };
+		5D8180AC20F5559F00C18103 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		5D8180AD20F5559F00C18103 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		5D8180AF20F5567F00C18103 /* ProfileCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewCell.h; sourceTree = "<group>"; };
+		5D8180B020F5567F00C18103 /* ProfileCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileCollectionViewCell.m; sourceTree = "<group>"; };
 		5DF15A0A20F412CE00498856 /* haleysinstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haleysinstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF15A0D20F412CE00498856 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5DF15A0E20F412CE00498856 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,16 +128,19 @@
 		5D5B003620F4797400274E1C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5D8180AA20F5397700C18103 /* default.png */,
 				5DF15A3F20F4174900498856 /* LoginViewController.h */,
 				5DF15A4020F4174900498856 /* LoginViewController.m */,
-				5DF15A4220F4176A00498856 /* FeedViewController.h */,
-				5DF15A4320F4176A00498856 /* FeedViewController.m */,
 				5DF15A4520F4191C00498856 /* SignUpViewController.h */,
 				5DF15A4620F4191C00498856 /* SignUpViewController.m */,
-				5D670DA220F42F0C00144D81 /* ComposeViewController.h */,
-				5D670DA320F42F0C00144D81 /* ComposeViewController.m */,
+				5DF15A4220F4176A00498856 /* FeedViewController.h */,
+				5DF15A4320F4176A00498856 /* FeedViewController.m */,
 				5D8180A120F525BA00C18103 /* DetailViewController.h */,
 				5D8180A220F525BA00C18103 /* DetailViewController.m */,
+				5D670DA220F42F0C00144D81 /* ComposeViewController.h */,
+				5D670DA320F42F0C00144D81 /* ComposeViewController.m */,
+				5D8180AC20F5559F00C18103 /* ProfileViewController.h */,
+				5D8180AD20F5559F00C18103 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -140,6 +154,10 @@
 				5D670DAC20F43A2A00144D81 /* Post.m */,
 				5D5B003B20F5018C00274E1C /* ErrorAlert.h */,
 				5D5B003C20F5018C00274E1C /* ErrorAlert.m */,
+				5D8180A720F5359F00C18103 /* MyUser.h */,
+				5D8180A820F5359F00C18103 /* MyUser.m */,
+				5D8180AF20F5567F00C18103 /* ProfileCollectionViewCell.h */,
+				5D8180B020F5567F00C18103 /* ProfileCollectionViewCell.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,6 +351,7 @@
 				5DF15A1A20F412CE00498856 /* LaunchScreen.storyboard in Resources */,
 				5DF15A1720F412CE00498856 /* Assets.xcassets in Resources */,
 				5DF15A1520F412CE00498856 /* Main.storyboard in Resources */,
+				5D8180AB20F5397700C18103 /* default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,15 +451,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D8180B120F5567F00C18103 /* ProfileCollectionViewCell.m in Sources */,
 				5DF15A1D20F412CE00498856 /* main.m in Sources */,
 				5DF15A4720F4191C00498856 /* SignUpViewController.m in Sources */,
 				5D5B003D20F5018C00274E1C /* ErrorAlert.m in Sources */,
 				5DF15A0F20F412CE00498856 /* AppDelegate.m in Sources */,
 				5DF15A4420F4176A00498856 /* FeedViewController.m in Sources */,
 				5D8180A320F525BA00C18103 /* DetailViewController.m in Sources */,
+				5D8180A920F5359F00C18103 /* MyUser.m in Sources */,
 				5D670DA420F42F0C00144D81 /* ComposeViewController.m in Sources */,
 				5DF15A4A20F42C8D00498856 /* InstagramCell.m in Sources */,
 				5DF15A4120F4174900498856 /* LoginViewController.m in Sources */,
+				5D8180AE20F5559F00C18103 /* ProfileViewController.m in Sources */,
 				5D670DAD20F43A2A00144D81 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

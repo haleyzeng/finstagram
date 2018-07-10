@@ -10,6 +10,8 @@
 
 #import <Parse/Parse.h>
 #import "ErrorAlert.h"
+#import "Post.h"
+#import "MyUser.h"
 
 
 @interface SignUpViewController ()
@@ -44,9 +46,12 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        PFUser *newUser = [PFUser new];
+        MyUser *newUser = [MyUser new];
         newUser.username = username;
         newUser.password = password;
+        UIImage *image = [UIImage imageNamed:@"default.png"];
+        NSLog(@"user image: %@", image);
+        newUser.profileImage = [MyUser getPFFileFromImage:image];
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil){
                 UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error signing up" withMessage:error.localizedDescription];
