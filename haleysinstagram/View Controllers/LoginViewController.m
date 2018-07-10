@@ -7,7 +7,10 @@
 //
 
 #import "LoginViewController.h"
+
 #import <Parse/Parse.h>
+#import "ErrorAlert.h"
+
 
 @interface LoginViewController ()
 
@@ -25,31 +28,23 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)showErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 #pragma mark - Manual Segue
 
 - (IBAction)didTapLogin:(id)sender {
     NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
     if ([username isEqualToString:@""] || [password isEqualToString:@""]) {
-        [self showErrorAlertWithTitle:@"Error"
+        UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error"
                               withMessage:@"username namd password required"];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else {
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * _Nullable user, NSError * _Nullable error) {
             if (error != nil) {
-                [self
-                 showErrorAlertWithTitle:@"Error Logging In"
+                UIAlertController *alert = [ErrorAlert
+                 getErrorAlertWithTitle:@"Error Logging In"
                  withMessage:error.localizedDescription];
+                [self presentViewController:alert animated:YES completion:nil];
             }
             else {
                 [self performSegueWithIdentifier:@"successfulLoginSegue" sender:nil];

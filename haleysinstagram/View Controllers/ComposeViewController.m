@@ -7,7 +7,9 @@
 //
 
 #import "ComposeViewController.h"
+
 #import "Post.h"
+#import "ErrorAlert.h"
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -61,19 +63,10 @@
              }
              else {
                  NSLog(@"failure");
-                 [self showErrorAlertWithTitle:@"Could not post" withMessage:error.localizedDescription];
+                 UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error posting" withMessage:error.localizedDescription];
+                 [self presentViewController:alert animated:YES completion:nil];
              }
          }];
-}
-
-- (void)showErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Memory Warning

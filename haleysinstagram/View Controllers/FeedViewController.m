@@ -6,14 +6,20 @@
 //  Copyright © 2018 Haley Zeng. All rights reserved.
 //
 
+#import "FeedViewController.h"
+
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
-#import "FeedViewController.h"
 #import "LoginViewController.h"
 #import "ComposeViewController.h"
 #import "InstagramCell.h"
+#import "Post.h"
+#import "ErrorAlert.h"
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *posts;
 
 @end
 
@@ -22,17 +28,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self fetchFeed];
 }
 
+- (void)fetchFeed {
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    query.limit = 20;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
+        if (error != nil) {
+            UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error loading feed" withMessage:error.localizedDescription];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else {
+            self.posts = posts;
+            [self.tableView reloadData];
+        }
+    }];
+}
 
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.posts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    InstagramCell *cell = [InstagramCell new];
+    InstagramCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"InstagramCell"];
+    Post *post = self.posts[indexPath.row];
+    cell.post = post;
     return cell;
 }
 

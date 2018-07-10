@@ -7,7 +7,10 @@
 //
 
 #import "SignUpViewController.h"
+
 #import <Parse/Parse.h>
+#import "ErrorAlert.h"
+
 
 @interface SignUpViewController ()
 
@@ -32,11 +35,13 @@
     NSString *password = self.passwordTextField.text;
     NSString *confirmPassword = self.confirmPasswordTextField.text;
     if ([username isEqualToString:@""] || [password isEqualToString:@""] || [confirmPassword isEqualToString:@""]) {
-        [self showErrorAlertWithTitle:@"Error"
+        UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error"
                           withMessage:@"username namd password required"];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else if (![password isEqualToString:confirmPassword]) {
-        [self showErrorAlertWithTitle:@"Error" withMessage:@"Passwords do not match"];
+        UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error" withMessage:@"Passwords do not match"];
+        [self presentViewController:alert animated:YES completion:nil];
     }
     else {
         PFUser *newUser = [PFUser new];
@@ -44,23 +49,14 @@
         newUser.password = password;
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil){
-                [self showErrorAlertWithTitle:@"Error signing up" withMessage:error.localizedDescription];
+                UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error signing up" withMessage:error.localizedDescription];
+                [self presentViewController:alert animated:YES completion:nil];
             }
             else {
                 [self performSegueWithIdentifier:@"successfulSignUpSegue" sender:nil];
             }
         }];
     }
-}
-
-- (void)showErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    
-    [alert addAction:ok];
-    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)didTapGoToLoginButton:(id)sender {

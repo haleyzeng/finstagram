@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="494" id="dyf-6S-1za" customClass="InstagramCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InstagramCell" rowHeight="494" id="dyf-6S-1za" customClass="InstagramCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="494"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dyf-6S-1za" id="Q0b-o0-zc7">
@@ -50,6 +50,11 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="yE9-jV-szx" id="tdE-0Z-0u3"/>
+                                            <outlet property="photoImageView" destination="I3s-BU-89A" id="Oh4-A4-Shi"/>
+                                            <outlet property="usernameLabel" destination="fJ1-Yq-BTb" id="357-jf-Sbl"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -69,6 +74,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="3bu-pq-7Eu" id="DaB-7b-NIR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qN9-6M-tgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

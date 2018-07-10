@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 @interface InstagramCell : UITableViewCell
+
+
+@property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
 @end
