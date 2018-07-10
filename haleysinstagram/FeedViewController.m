@@ -10,8 +10,9 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "InstagramCell.h"
 
-@interface FeedViewController ()
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -39,6 +40,14 @@
     }];
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    InstagramCell *cell = [InstagramCell new];
+    return cell;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
