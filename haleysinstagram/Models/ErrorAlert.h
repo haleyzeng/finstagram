@@ -11,6 +11,6 @@
 
 @interface ErrorAlert : NSObject
 
-+(UIAlertController *)getErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg;
++ (UIAlertController *)getErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg;
 
 @end

@@ -6,8 +6,10 @@
 //  Copyright © 2018 Haley Zeng. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "Post.h"
+
+#import <UIKit/UIKit.h>
+#import "UIImageView+AFNetworking.h"
 
 @interface InstagramCell : UITableViewCell
 

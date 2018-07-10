@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ComposeViewDelegate
+
+-(void)didFinishPost;
+
+@end
+
 @interface ComposeViewController : UIViewController
 
+@property (weak, nonatomic) id<ComposeViewDelegate> delegate;
 @property (strong, nonatomic) UIImage *image;
 
 @end

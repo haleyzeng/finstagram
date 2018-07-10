@@ -46,7 +46,7 @@
     return newImage;
 }
 
-#pragma mark - Button Functionality
+#pragma mark - Bar Button Functionality
 
 - (IBAction)didTapCancel:(id)sender {
     NSLog(@"tapped cancel");
@@ -59,6 +59,7 @@
          withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
              if (succeeded) {
                  NSLog(@"success");
+                 [self.delegate didFinishPost];
                  [self dismissViewControllerAnimated:YES completion:^{}];
              }
              else {
