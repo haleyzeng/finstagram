@@ -9,6 +9,7 @@ target 'haleysinstagram' do
 
   pod 'Parse'
   pod 'AFNetworking'
+  pod 'DateTools'
 
   target 'haleysinstagramTests' do
     inherit! :search_paths

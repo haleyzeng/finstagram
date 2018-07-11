@@ -8,6 +8,7 @@
 
 #import "InstagramCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DateTools.h"
 
 @implementation InstagramCell
 
@@ -22,6 +23,14 @@
     self.usernameLabel.text = self.post.author.username;
     self.captionLabel.text = self.post.caption;
 
+    NSDate *createdAtDate = self.post.createdAt;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSString *relativeDate = [NSDate shortTimeAgoSinceDate:createdAtDate];
+    self.dateLabel.text = relativeDate;
+    
     // set post's photo imageview
     NSURL *photoURL = [NSURL URLWithString:self.post.image.url];
     NSURLRequest *request = [NSURLRequest requestWithURL:photoURL];

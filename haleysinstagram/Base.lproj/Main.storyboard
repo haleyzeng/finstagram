@@ -43,6 +43,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Yq-BTb">
+                                                    <rect key="frame" x="63" y="16" width="82" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-5s-dnV">
                                                     <rect key="frame" x="15" y="6" width="40" height="40"/>
                                                     <constraints>
@@ -50,10 +56,10 @@
                                                         <constraint firstAttribute="height" constant="40" id="aop-Wq-H2O"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Yq-BTb">
-                                                    <rect key="frame" x="63" y="16" width="79" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1UA-9O-b4P">
+                                                    <rect key="frame" x="325" y="16" width="35" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -62,17 +68,20 @@
                                                 <constraint firstItem="I3s-BU-89A" firstAttribute="leading" secondItem="Q0b-o0-zc7" secondAttribute="leading" id="6SF-tm-O1i"/>
                                                 <constraint firstItem="yE9-jV-szx" firstAttribute="leading" secondItem="Q0b-o0-zc7" secondAttribute="leading" constant="15" id="CmE-BG-or7"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yE9-jV-szx" secondAttribute="trailing" constant="15" id="DHZ-6N-U7L"/>
+                                                <constraint firstAttribute="trailing" secondItem="1UA-9O-b4P" secondAttribute="trailing" constant="15" id="Fa8-er-GQR"/>
                                                 <constraint firstItem="fJ1-Yq-BTb" firstAttribute="centerY" secondItem="nwt-5s-dnV" secondAttribute="centerY" id="UhG-Ix-6M3"/>
                                                 <constraint firstAttribute="bottom" secondItem="yE9-jV-szx" secondAttribute="bottom" constant="11" id="WxG-1f-lUW"/>
                                                 <constraint firstItem="fJ1-Yq-BTb" firstAttribute="leading" secondItem="nwt-5s-dnV" secondAttribute="trailing" constant="8" id="cvj-fw-RVZ"/>
                                                 <constraint firstItem="nwt-5s-dnV" firstAttribute="top" secondItem="Q0b-o0-zc7" secondAttribute="top" constant="6" id="f5H-ET-KAY"/>
                                                 <constraint firstAttribute="trailing" secondItem="I3s-BU-89A" secondAttribute="trailing" id="fqO-ov-R8e"/>
+                                                <constraint firstItem="1UA-9O-b4P" firstAttribute="centerY" secondItem="fJ1-Yq-BTb" secondAttribute="centerY" id="hJn-Aa-BJw"/>
                                                 <constraint firstItem="yE9-jV-szx" firstAttribute="top" secondItem="I3s-BU-89A" secondAttribute="bottom" constant="8" id="llB-Yy-Cwf"/>
                                                 <constraint firstItem="nwt-5s-dnV" firstAttribute="leading" secondItem="Q0b-o0-zc7" secondAttribute="leading" constant="15" id="tFi-Yk-maV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="captionLabel" destination="yE9-jV-szx" id="tdE-0Z-0u3"/>
+                                            <outlet property="dateLabel" destination="1UA-9O-b4P" id="Y0T-dD-567"/>
                                             <outlet property="photoImageView" destination="I3s-BU-89A" id="Oh4-A4-Shi"/>
                                             <outlet property="profileImageView" destination="nwt-5s-dnV" id="88M-OW-FPV"/>
                                             <outlet property="usernameLabel" destination="fJ1-Yq-BTb" id="357-jf-Sbl"/>
