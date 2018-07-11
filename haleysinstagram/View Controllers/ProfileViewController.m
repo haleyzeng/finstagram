@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *photoTapGesture;
+
 @property (strong, nonatomic) NSArray *posts;
 
 @end
@@ -33,14 +35,27 @@
 }
 
 - (void)setupView {
+    // if profile view was from segue, userProfile already set
+    // if not, profile view was from tab bar; set to own profile
+    if (self.userProfile == nil)
+        self.userProfile = MyUser.currentUser;
+    
+    self.usernameLabel.text = self.userProfile.username;
+    
+    [self putProfilePicture];
+    
+    // if profile is self, allow change profile pic
+    if ([self.userProfile.objectId isEqualToString:MyUser.currentUser.objectId]) {
+        self.photoTapGesture.enabled = YES;
+    }
+    else { // not self
+        self.photoTapGesture.enabled = NO;
+    }
+
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
     [self adjustCollectionViewCellSize];
-    
-    self.userProfile = MyUser.currentUser;
-    [self putProfilePicture];
-    self.usernameLabel.text = self.userProfile.username;
     
     [self fetchProfilePosts];
 }
@@ -83,8 +98,7 @@
 
 - (void)fetchProfilePosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    MyUser *current = MyUser.currentUser;
-    [query whereKey:@"author" equalTo:current];
+    [query whereKey:@"author" equalTo:self.userProfile];
     [query includeKey:@"author"];
     [query includeKey:@"image"];
     
@@ -175,13 +189,16 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    ProfileCollectionViewCell *tappedCell = sender;
-    Post *post = tappedCell.post;
-   DetailViewController *detailViewController = [segue destinationViewController];
-    detailViewController.post = post;
-
+    if ([segue.identifier isEqualToString:@"fromProfileToDetailViewSegue"]) {
+        ProfileCollectionViewCell *tappedCell = sender;
+        Post *post = tappedCell.post;
+        DetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.post = post;
+    }
+    else if ([segue.identifier isEqualToString:@"goToProfileViewSegue"]) {
+        NSLog(@"sender: %@", sender);
+    }
+    
 }
 
 

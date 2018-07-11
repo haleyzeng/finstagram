@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "ComposeViewController.h"
 #import "DetailViewController.h"
+#import "ProfileViewController.h"
 #import "InstagramCell.h"
 #import "Post.h"
 #import "ErrorAlert.h"
@@ -89,6 +90,15 @@
     InstagramCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"InstagramCell"];
     Post *post = self.posts[indexPath.row];
     cell.post = post;
+    
+    UITapGestureRecognizer *iconGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapProfileIcon:)];
+    [cell.profileImageView addGestureRecognizer:iconGesture];
+    cell.profileImageView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *labelGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapUsernameLabel:)];
+    [cell.usernameLabel addGestureRecognizer:labelGesture];
+    cell.usernameLabel.userInteractionEnabled = YES;
+    
     return cell;
 }
 
@@ -182,19 +192,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapUsernameLabel:(id)sender {
+    
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
+    UILabel *label = (UILabel *)gesture.view;
+    InstagramCell *tappedCell = (InstagramCell *)label.superview.superview;
+    [self performSegueWithIdentifier:@"goToProfileViewSegue" sender:tappedCell];
+}
+
+- (IBAction)didTapProfileIcon:(id)sender {
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
+    UIImageView *profileIcon = (UIImageView *) gesture.view;
+    InstagramCell *tappedCell = (InstagramCell *)profileIcon.superview.superview;
+    [self performSegueWithIdentifier:@"goToProfileViewSegue" sender:tappedCell];
+}
+
+
+
 
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     InstagramCell *tappedCell = sender;
+     Post *post = tappedCell.post;
+     
      if ([segue.identifier isEqualToString:@"goToDetailViewSegue"]) {
-         InstagramCell *tappedCell = sender;
-         Post *post = tappedCell.post;
-        DetailViewController *detailViewController = [segue destinationViewController];
+         DetailViewController *detailViewController = [segue destinationViewController];
          detailViewController.post = post;
      }
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     else if ([segue.identifier isEqualToString:@"goToProfileViewSegue"]) {
+         ProfileViewController *profileViewController = [segue destinationViewController];
+         profileViewController.userProfile = tappedCell.post.author;
+     }
  }
 
 

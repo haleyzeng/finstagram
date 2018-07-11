@@ -43,14 +43,16 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Yq-BTb">
+                                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJ1-Yq-BTb">
                                                     <rect key="frame" x="63" y="16" width="82" height="21"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-5s-dnV">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nwt-5s-dnV">
                                                     <rect key="frame" x="15" y="6" width="40" height="40"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="CQn-RI-b0a"/>
                                                         <constraint firstAttribute="height" constant="40" id="aop-Wq-H2O"/>
@@ -109,11 +111,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3bu-pq-7Eu" id="DaB-7b-NIR"/>
+                        <segue destination="5rd-0l-yDg" kind="show" identifier="goToProfileViewSegue" id="yyU-ce-6M7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qN9-6M-tgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5492" y="-204"/>
+            <point key="canvasLocation" x="5492" y="-36"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="CuX-jq-XUn">
@@ -503,7 +506,7 @@
         <!--Profile View Controller-->
         <scene sceneID="KaE-PM-B15">
             <objects>
-                <viewController id="5rd-0l-yDg" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="5rd-0l-yDg" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qEw-pN-8r2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -547,7 +550,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="profilePostImageView" destination="edS-GR-5hR" id="rc9-Cn-2AP"/>
-                                            <segue destination="XAV-Hm-LTe" kind="show" id="tZq-OF-uVQ"/>
+                                            <segue destination="XAV-Hm-LTe" kind="show" identifier="fromProfileToDetailViewSegue" id="tZq-OF-uVQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -566,6 +569,7 @@
                     <navigationItem key="navigationItem" id="vbj-bM-Y2F"/>
                     <connections>
                         <outlet property="collectionView" destination="nSO-CH-g3Q" id="LOT-BI-Myh"/>
+                        <outlet property="photoTapGesture" destination="DWY-sn-R0N" id="iwz-4V-11s"/>
                         <outlet property="profileImageView" destination="U4G-ZC-lbv" id="3N1-5O-zZG"/>
                         <outlet property="usernameLabel" destination="4KQ-C4-LCh" id="Ccw-9G-nQv"/>
                     </connections>
@@ -624,6 +628,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LNx-XJ-e86"/>
-        <segue reference="tZq-OF-uVQ"/>
+        <segue reference="yyU-ce-6M7"/>
+        <segue reference="ck9-td-W1b"/>
     </inferredMetricsTieBreakers>
 </document>
