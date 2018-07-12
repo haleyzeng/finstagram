@@ -8,11 +8,39 @@
 
 #import "CommentCell.h"
 
+#import "UIImageView+AFNetworking.h"
+
 @implementation CommentCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+}
+
+- (void)setComment:(Comment *)comment {
+    _comment = comment;
+    NSAttributedString *formattedCommentText = [comment makeFormattedCommentTextFromUnformattedCommentText];
+    self.commentTextLabel.attributedText = formattedCommentText;
+    __weak CommentCell *weakSelf = self;
+    // set post's user's profile icon imageview
+    NSURL *profilePhotoURL = [NSURL URLWithString:self.comment.post.author.profileImage.url];
+    NSURLRequest *profilePicRequest = [NSURLRequest requestWithURL:profilePhotoURL];;
+    [self.commenterImageView setImageWithURLRequest:profilePicRequest placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+        // imageResponse will be nil if the image is cached
+        if (imageResponse) {
+            weakSelf.commente.alpha = 0.0;
+            weakSelf.profileImageView.image = image;
+            
+            //Animate UIImageView back to alpha 1 over 0.3sec
+            [UIView animateWithDuration:0.3 animations:^{
+                weakSelf.profileImageView.alpha = 1.0;
+            }];
+        }
+        else {
+            weakSelf.profileImageView.image = image;
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

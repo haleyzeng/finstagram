@@ -14,4 +14,8 @@
 
 @property (strong, nonatomic) Comment *comment;
 
+@property (weak, nonatomic) IBOutlet UIImageView *commenterImageView;
+@property (weak, nonatomic) IBOutlet UILabel *commentTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *commentCreatedAtLabel;
+
 @end

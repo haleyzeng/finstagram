@@ -46,13 +46,7 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        MyUser *newUser = [MyUser new];
-        newUser.username = username;
-        newUser.password = password;
-        UIImage *image = [UIImage imageNamed:@"default.png"];
-        NSLog(@"user image: %@", image);
-        newUser.profileImage = [MyUser getPFFileFromImage:image];
-        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        [MyUser createUserWithUsername:username withPassword:password withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil){
                 UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error signing up" withMessage:error.localizedDescription];
                 [self presentViewController:alert animated:YES completion:nil];

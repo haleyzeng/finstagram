@@ -32,6 +32,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentCell *commentCell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+    commentCell.comment = self.comments[indexPath.row];
     return commentCell;
 }
 

@@ -29,9 +29,9 @@
     return [[self.author.username stringByAppendingString:@" "] stringByAppendingString:commentContent];
 }
 
-- (NSAttributedString *)makeFormattedCommentTextFromUnformattedCommentText:(NSString *)unformattedCommentText {
+- (NSAttributedString *)makeFormattedCommentTextFromUnformattedCommentText {
     
-    NSMutableAttributedString *formattedCommentText = [[NSMutableAttributedString alloc] initWithString:unformattedCommentText];
+    NSMutableAttributedString *formattedCommentText = [[NSMutableAttributedString alloc] initWithString:self.unformattedCommentText];
     
     NSRange range = NSMakeRange(0, self.author.username.length);
     
