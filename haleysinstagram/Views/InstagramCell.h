@@ -21,6 +21,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeButtonToLikeCountLabelConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeCountLabelToCaptionLabelConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *captionLabelToViewCommentsButtonConstraint;
+
 
 - (void)toggleLike:(MyUser *)user withCompletion:completion;
 

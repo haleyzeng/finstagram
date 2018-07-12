@@ -79,6 +79,8 @@
     
     // set like button based on if current user liked
     self.likeButton.selected = [self.post isLikedByUser:MyUser.currentUser];
+    
+    [self updateLikeCountLabel];
 }
 
 
@@ -92,7 +94,30 @@
         [self.post removeLike:MyUser.currentUser withCompletion:completion];
     }
     self.likeButton.selected = !self.likeButton.selected;
+    [self updateLikeCountLabel];
 }
+
+- (void)updateLikeCountLabel {
+    NSUInteger count = self.post.likedBy.count;
+    if (count == 0) {
+        self.likeButtonToLikeCountLabelConstraint.constant = 0;
+        self.likeCountLabelToCaptionLabelConstraint.constant = 0;
+        self.likeCountLabel.text = nil;
+    }
+    else {
+        [self.likeCountLabel sizeToFit];
+        self.likeButtonToLikeCountLabelConstraint.constant = 8;
+        self.likeCountLabelToCaptionLabelConstraint.constant = 4;
+        if (count == 1) {
+            self.likeCountLabel.text = @"1 like";
+        }
+        else {
+            self.likeCountLabel.text = [NSString stringWithFormat:@"%lu likes", self.post.likedBy.count];
+        }
+        [self.likeCountLabel sizeToFit];
+    }
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

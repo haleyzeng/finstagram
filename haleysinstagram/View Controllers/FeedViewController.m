@@ -206,6 +206,10 @@
             NSLog(@"successfully toggled like");
         }
     }];
+    // in case the "# likes" line is being added/taken away,
+    // allow tableview cell to readjust tableview size
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
 }
 
 #pragma mark - Navigation

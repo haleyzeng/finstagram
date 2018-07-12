@@ -30,7 +30,7 @@ The following **optional** features are implemented:
 - [x] Display the profile photo with each post
 - [x] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+- [x] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
@@ -38,6 +38,8 @@ The following **additional** features are implemented:
 - [x] When run on the phone, user can choose to use camera or library
 - [x] In the Profile, clicking on a post opens a detail view
 - [x] All images fade in as they load
+- [x] User can like and unlike post and see number of likes  in both the timeline and detail view
+- [x] Like count will say "like" when only 1 like, "likes" otherwise
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
