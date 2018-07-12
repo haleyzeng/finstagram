@@ -24,11 +24,7 @@
     NSString *username = self.post.author.username;
     self.usernameLabel.text = username;
     
-    if (self.post.caption != nil) {
-        Comment *caption = [[Comment alloc] initWithPost:self.post author:self.post.author commentContent:self.post.caption];
-    
-        self.captionLabel.attributedText = [caption makeFormattedCommentTextFromUnformattedCommentText];
-    }
+    [self updateCaptionLabel];
         
     NSDate *createdAtDate = self.post.createdAt;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -100,13 +96,11 @@
 - (void)updateLikeCountLabel {
     NSUInteger count = self.post.likedBy.count;
     if (count == 0) {
-        self.likeButtonToLikeCountLabelConstraint.constant = 0;
         self.likeCountLabelToCaptionLabelConstraint.constant = 0;
         self.likeCountLabel.text = nil;
     }
     else {
         [self.likeCountLabel sizeToFit];
-        self.likeButtonToLikeCountLabelConstraint.constant = 8;
         self.likeCountLabelToCaptionLabelConstraint.constant = 4;
         if (count == 1) {
             self.likeCountLabel.text = @"1 like";
@@ -118,6 +112,16 @@
     }
 }
 
+- (void)updateCaptionLabel {
+    if (![self.post.caption isEqualToString:@""]) {
+        Comment *caption = [[Comment alloc] initWithPost:self.post author:self.post.author commentContent:self.post.caption];
+        
+        self.captionLabel.attributedText = [caption makeFormattedCommentTextFromUnformattedCommentText];
+    }
+    else {
+        self.captionLabel.text = nil;
+    }
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

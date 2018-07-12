@@ -40,6 +40,7 @@ The following **additional** features are implemented:
 - [x] All images fade in as they load
 - [x] User can like and unlike post and see number of likes  in both the timeline and detail view
 - [x] Like count will say "like" when only 1 like, "likes" otherwise
+- [x] # of likes label is not present if likes are 0
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

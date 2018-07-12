@@ -140,6 +140,7 @@
                                             <outlet property="photoImageView" destination="I3s-BU-89A" id="Oh4-A4-Shi"/>
                                             <outlet property="profileImageView" destination="nwt-5s-dnV" id="88M-OW-FPV"/>
                                             <outlet property="usernameLabel" destination="fJ1-Yq-BTb" id="357-jf-Sbl"/>
+                                            <outlet property="viewCommentsButtonToBottomConstraint" destination="MRc-iZ-1Hj" id="7Sb-vx-jrk"/>
                                             <segue destination="XAV-Hm-LTe" kind="show" identifier="goToDetailViewSegue" id="ck9-td-W1b"/>
                                         </connections>
                                     </tableViewCell>

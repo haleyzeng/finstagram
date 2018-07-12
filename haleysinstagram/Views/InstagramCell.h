@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeButtonToLikeCountLabelConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeCountLabelToCaptionLabelConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *captionLabelToViewCommentsButtonConstraint;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewCommentsButtonToBottomConstraint;
 
 - (void)toggleLike:(MyUser *)user withCompletion:completion;
 
