@@ -37,6 +37,7 @@
 - (void)setupView {
     // if profile view was from segue, userProfile already set
     // if not, profile view was from tab bar; set to own profile
+    
     if (self.userProfile == nil)
         self.userProfile = MyUser.currentUser;
     
@@ -54,8 +55,6 @@
 
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    
-    [self adjustCollectionViewCellSize];
     
     [self fetchProfilePosts];
 }
@@ -89,7 +88,10 @@
     
     CGFloat imagesPerRow = 3;
     CGFloat width = self.collectionView.frame.size.width;
+    NSLog(@"full width: %f", width);
     CGFloat itemWidth = (width - (layout.minimumInteritemSpacing * (imagesPerRow - 1))) / imagesPerRow;
+    
+    NSLog(@"itemWidth %f", itemWidth);
     
     CGFloat itemHeight = itemWidth;
     
@@ -105,6 +107,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.posts = posts;
+            [self adjustCollectionViewCellSize];
             [self.collectionView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -115,7 +118,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ProfileCollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"profileCollectionViewCell" forIndexPath:indexPath];
+    ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"profileCollectionViewCell" forIndexPath:indexPath];
     Post *post = self.posts[indexPath.item];
     cell.post = post;
     return cell;

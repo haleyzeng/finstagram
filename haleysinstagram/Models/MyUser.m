@@ -31,4 +31,14 @@
     return [PFFile fileWithName:@"image.png" data:imageData];
 }
 
++ (void) createUserWithUsername:(NSString *)username withPassword:(NSString *)password withCompletion: (PFBooleanResultBlock _Nullable)completion {
+    MyUser *newUser = [MyUser new];
+    newUser.username = username;
+    newUser.password = password;
+    UIImage *image = [UIImage imageNamed:@"default.png"];
+    NSLog(@"user image: %@", image);
+    newUser.profileImage = [MyUser getPFFileFromImage:image];
+    [newUser signUpInBackgroundWithBlock:completion];
+}
+
 @end

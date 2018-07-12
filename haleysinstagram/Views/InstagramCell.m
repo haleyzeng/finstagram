@@ -9,6 +9,7 @@
 #import "InstagramCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DateTools.h"
+#import "Comment.h"
 
 @implementation InstagramCell
 
@@ -20,9 +21,16 @@
 - (void)setPost:(Post *)post {
     _post = post;
     
-    self.usernameLabel.text = self.post.author.username;
-    self.captionLabel.text = self.post.caption;
-
+    NSString *username = self.post.author.username;
+    self.usernameLabel.text = username;
+    
+    if (self.post.caption != nil) {
+        NSLog(@"caption: %@", self.post.caption);
+        Comment *caption = [[Comment alloc] initWithPost:self.post author:self.post.author commentContent:self.post.caption];
+    
+        self.captionLabel.attributedText = [caption makeFormattedCommentTextFromUnformattedCommentText:caption.unformattedCommentText];
+    }
+        
     NSDate *createdAtDate = self.post.createdAt;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];

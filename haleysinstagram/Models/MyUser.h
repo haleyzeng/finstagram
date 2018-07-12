@@ -15,4 +15,6 @@
 
 + (PFFile *_Nullable)getPFFileFromImage:(UIImage * _Nullable)image;
 
++ (void) createUserWithUsername:(NSString *_Nonnull)username withPassword:(NSString *_Nonnull)password withCompletion: (PFBooleanResultBlock _Nullable)completion;
+
 @end

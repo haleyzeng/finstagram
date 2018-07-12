@@ -16,6 +16,8 @@
 		5D8180AB20F5397700C18103 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8180AA20F5397700C18103 /* default.png */; };
 		5D8180AE20F5559F00C18103 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180AD20F5559F00C18103 /* ProfileViewController.m */; };
 		5D8180B120F5567F00C18103 /* ProfileCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180B020F5567F00C18103 /* ProfileCollectionViewCell.m */; };
+		5D8180B420F6705000C18103 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180B320F6705000C18103 /* CommentCell.m */; };
+		5D8180B720F670BF00C18103 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8180B620F670BF00C18103 /* Comment.m */; };
 		5DF15A0F20F412CE00498856 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A0E20F412CE00498856 /* AppDelegate.m */; };
 		5DF15A1520F412CE00498856 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DF15A1320F412CE00498856 /* Main.storyboard */; };
 		5DF15A1720F412CE00498856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DF15A1620F412CE00498856 /* Assets.xcassets */; };
@@ -27,6 +29,7 @@
 		5DF15A4420F4176A00498856 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A4320F4176A00498856 /* FeedViewController.m */; };
 		5DF15A4720F4191C00498856 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A4620F4191C00498856 /* SignUpViewController.m */; };
 		5DF15A4A20F42C8D00498856 /* InstagramCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF15A4920F42C8D00498856 /* InstagramCell.m */; };
+		5DF2928620F6B27900AA58C5 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF2928520F6B27900AA58C5 /* CommentsViewController.m */; };
 		8468D2004FE6E1EC604F4D02 /* libPods-haleysinstagramTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A19A720F081735CB60E59D4B /* libPods-haleysinstagramTests.a */; };
 		C32B2581EB0E493183608A7A /* libPods-haleysinstagramUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB58DF30BE0E1DEAAEA8A730 /* libPods-haleysinstagramUITests.a */; };
 /* End PBXBuildFile section */
@@ -67,6 +70,10 @@
 		5D8180AD20F5559F00C18103 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		5D8180AF20F5567F00C18103 /* ProfileCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileCollectionViewCell.h; sourceTree = "<group>"; };
 		5D8180B020F5567F00C18103 /* ProfileCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileCollectionViewCell.m; sourceTree = "<group>"; };
+		5D8180B220F6705000C18103 /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		5D8180B320F6705000C18103 /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		5D8180B520F670BF00C18103 /* Comment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		5D8180B620F670BF00C18103 /* Comment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		5DF15A0A20F412CE00498856 /* haleysinstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = haleysinstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DF15A0D20F412CE00498856 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5DF15A0E20F412CE00498856 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +96,8 @@
 		5DF15A4620F4191C00498856 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		5DF15A4820F42C8D00498856 /* InstagramCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstagramCell.h; sourceTree = "<group>"; };
 		5DF15A4920F42C8D00498856 /* InstagramCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramCell.m; sourceTree = "<group>"; };
+		5DF2928420F6B27900AA58C5 /* CommentsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		5DF2928520F6B27900AA58C5 /* CommentsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
 		82A873501E731F0486022251 /* Pods-haleysinstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-haleysinstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-haleysinstagram/Pods-haleysinstagram.release.xcconfig"; sourceTree = "<group>"; };
 		8C7CE8F9354FBDF878477126 /* libPods-haleysinstagram.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haleysinstagram.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19A720F081735CB60E59D4B /* libPods-haleysinstagramTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-haleysinstagramTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +150,8 @@
 				5D670DA320F42F0C00144D81 /* ComposeViewController.m */,
 				5D8180AC20F5559F00C18103 /* ProfileViewController.h */,
 				5D8180AD20F5559F00C18103 /* ProfileViewController.m */,
+				5DF2928420F6B27900AA58C5 /* CommentsViewController.h */,
+				5DF2928520F6B27900AA58C5 /* CommentsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -148,16 +159,14 @@
 		5D5B003720F4798B00274E1C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5DF15A4820F42C8D00498856 /* InstagramCell.h */,
-				5DF15A4920F42C8D00498856 /* InstagramCell.m */,
-				5D670DAB20F43A2A00144D81 /* Post.h */,
-				5D670DAC20F43A2A00144D81 /* Post.m */,
 				5D5B003B20F5018C00274E1C /* ErrorAlert.h */,
 				5D5B003C20F5018C00274E1C /* ErrorAlert.m */,
+				5D670DAB20F43A2A00144D81 /* Post.h */,
+				5D670DAC20F43A2A00144D81 /* Post.m */,
 				5D8180A720F5359F00C18103 /* MyUser.h */,
 				5D8180A820F5359F00C18103 /* MyUser.m */,
-				5D8180AF20F5567F00C18103 /* ProfileCollectionViewCell.h */,
-				5D8180B020F5567F00C18103 /* ProfileCollectionViewCell.m */,
+				5D8180B520F670BF00C18103 /* Comment.h */,
+				5D8180B620F670BF00C18103 /* Comment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				5D5B003620F4797400274E1C /* View Controllers */,
+				5DF2928020F69B0500AA58C5 /* Views */,
 				5D5B003720F4798B00274E1C /* Models */,
 				5DF15A1320F412CE00498856 /* Main.storyboard */,
 				5DF15A1820F412CE00498856 /* LaunchScreen.storyboard */,
@@ -216,6 +226,19 @@
 				5DF15A3320F412CF00498856 /* Info.plist */,
 			);
 			path = haleysinstagramUITests;
+			sourceTree = "<group>";
+		};
+		5DF2928020F69B0500AA58C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5DF15A4820F42C8D00498856 /* InstagramCell.h */,
+				5DF15A4920F42C8D00498856 /* InstagramCell.m */,
+				5D8180AF20F5567F00C18103 /* ProfileCollectionViewCell.h */,
+				5D8180B020F5567F00C18103 /* ProfileCollectionViewCell.m */,
+				5D8180B220F6705000C18103 /* CommentCell.h */,
+				5D8180B320F6705000C18103 /* CommentCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		77B994A5292AA43E36533777 /* Frameworks */ = {
@@ -461,10 +484,13 @@
 				5DF15A4420F4176A00498856 /* FeedViewController.m in Sources */,
 				5D8180A320F525BA00C18103 /* DetailViewController.m in Sources */,
 				5D8180A920F5359F00C18103 /* MyUser.m in Sources */,
+				5DF2928620F6B27900AA58C5 /* CommentsViewController.m in Sources */,
 				5D670DA420F42F0C00144D81 /* ComposeViewController.m in Sources */,
+				5D8180B420F6705000C18103 /* CommentCell.m in Sources */,
 				5DF15A4A20F42C8D00498856 /* InstagramCell.m in Sources */,
 				5DF15A4120F4174900498856 /* LoginViewController.m in Sources */,
 				5D8180AE20F5559F00C18103 /* ProfileViewController.m in Sources */,
+				5D8180B720F670BF00C18103 /* Comment.m in Sources */,
 				5D670DAD20F43A2A00144D81 /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

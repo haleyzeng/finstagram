@@ -10,10 +10,13 @@
 
 #import <Parse/Parse.h>
 #import "AppDelegate.h"
+
 #import "LoginViewController.h"
 #import "ComposeViewController.h"
 #import "DetailViewController.h"
 #import "ProfileViewController.h"
+#import "CommentsViewController.h"
+
 #import "InstagramCell.h"
 #import "Post.h"
 #import "ErrorAlert.h"
@@ -87,7 +90,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    InstagramCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"InstagramCell"];
+    InstagramCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InstagramCell"];
+    
+    
     Post *post = self.posts[indexPath.row];
     cell.post = post;
     
@@ -192,6 +197,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Navigation
+
 - (IBAction)didTapUsernameLabel:(id)sender {
     
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
@@ -207,12 +214,13 @@
     [self performSegueWithIdentifier:@"goToProfileViewSegue" sender:tappedCell];
 }
 
+- (IBAction)didTapViewComments:(id)sender {
+    UIButton *button = sender;
+    InstagramCell *tappedCell = (InstagramCell *)button.superview.superview;
+    [self performSegueWithIdentifier:@"goToCommentsSegue" sender:tappedCell];
+}
 
 
-
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      InstagramCell *tappedCell = sender;
      Post *post = tappedCell.post;
@@ -224,6 +232,10 @@
      else if ([segue.identifier isEqualToString:@"goToProfileViewSegue"]) {
          ProfileViewController *profileViewController = [segue destinationViewController];
          profileViewController.userProfile = tappedCell.post.author;
+     }
+     else if ([segue.identifier isEqualToString:@"goToCommentsSegue"]) {
+         CommentsViewController *commentsViewController = [segue destinationViewController];
+         commentsViewController.post = tappedCell.post;
      }
  }
 
