@@ -57,7 +57,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
-
+- Heart and filled heart icons made by [Smashicons](https://www.smashicons.com/), retrieved from [flaticon.com](https://flaticon.com)
+- Reply icon made by [iconice](https://iconice.com), retrieved from [flaticon.com](https://flaticon.com)
 
 ## Notes
 

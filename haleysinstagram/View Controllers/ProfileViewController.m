@@ -83,8 +83,8 @@
 - (void)adjustCollectionViewCellSize {
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
-    layout.minimumLineSpacing = 0;
-    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 2;
+    layout.minimumInteritemSpacing = 2;
     
     CGFloat imagesPerRow = 3;
     CGFloat width = self.collectionView.frame.size.width;

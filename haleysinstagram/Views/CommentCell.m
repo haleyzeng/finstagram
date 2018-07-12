@@ -28,16 +28,16 @@
     [self.commenterImageView setImageWithURLRequest:profilePicRequest placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
         // imageResponse will be nil if the image is cached
         if (imageResponse) {
-            weakSelf.commente.alpha = 0.0;
-            weakSelf.profileImageView.image = image;
+            weakSelf.commenterImageView.alpha = 0.0;
+            weakSelf.commenterImageView.image = image;
             
             //Animate UIImageView back to alpha 1 over 0.3sec
             [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.profileImageView.alpha = 1.0;
+                weakSelf.commenterImageView.alpha = 1.0;
             }];
         }
         else {
-            weakSelf.profileImageView.image = image;
+            weakSelf.commenterImageView.image = image;
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
     

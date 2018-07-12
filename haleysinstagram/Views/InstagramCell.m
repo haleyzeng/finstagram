@@ -28,7 +28,7 @@
         NSLog(@"caption: %@", self.post.caption);
         Comment *caption = [[Comment alloc] initWithPost:self.post author:self.post.author commentContent:self.post.caption];
     
-        self.captionLabel.attributedText = [caption makeFormattedCommentTextFromUnformattedCommentText:caption.unformattedCommentText];
+        self.captionLabel.attributedText = [caption makeFormattedCommentTextFromUnformattedCommentText];
     }
         
     NSDate *createdAtDate = self.post.createdAt;
