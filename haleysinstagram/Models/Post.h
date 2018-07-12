@@ -16,13 +16,15 @@
 @property (nonatomic, strong) MyUser * _Nullable author;
 @property (nonatomic, strong) NSString * _Nullable caption;
 @property (nonatomic, strong) PFFile * _Nullable image;
-//@property (nonatomic, strong) NSString *absoluteCreatedAtDate;
-@property (nonatomic, strong) NSNumber * _Nullable likeCount;
-@property (nonatomic, strong) NSNumber * _Nullable commentCount;
+
+@property (nonatomic, strong) NSArray * _Nullable likedBy;
+@property (nonatomic, strong) NSMutableArray * _Nullable comments;
 
 + (void)postUserImage:(UIImage * _Nullable)image
           withCaption:(NSString * _Nullable)caption
        withCompletion:(PFBooleanResultBlock  _Nullable)completion;
 
-
+- (void)addLike:(MyUser *_Nullable)user withCompletion:completion;
+- (void)removeLike:(MyUser *_Nullable)user withCompletion:completion;
+- (BOOL)isLikedByUser:(MyUser *_Nullable)user;
 @end

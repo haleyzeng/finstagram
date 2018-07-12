@@ -49,6 +49,8 @@
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     [query includeKey:@"image"];
+    [query includeKey:@"likedBy"];
+    [query includeKey:@"comments"];
     query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
@@ -190,11 +192,20 @@
    
 }
 
-#pragma mark - Memory Warning
+#pragma mark - Table Cell Button Functionality
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)didTapLikeButton:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    InstagramCell *cell = (InstagramCell *) button.superview.superview;
+    [cell toggleLike:MyUser.currentUser withCompletion:^(BOOL succeeded, NSError * _Nullable error){
+        if (error) {
+            UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error toggling like" withMessage:error.localizedDescription];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else {
+            NSLog(@"successfully toggled like");
+        }
+    }];
 }
 
 #pragma mark - Navigation
@@ -239,5 +250,11 @@
      }
  }
 
+#pragma mark - Memory Warning
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

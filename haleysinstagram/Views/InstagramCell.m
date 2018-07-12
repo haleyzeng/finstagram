@@ -25,7 +25,6 @@
     self.usernameLabel.text = username;
     
     if (self.post.caption != nil) {
-        NSLog(@"caption: %@", self.post.caption);
         Comment *caption = [[Comment alloc] initWithPost:self.post author:self.post.author commentContent:self.post.caption];
     
         self.captionLabel.attributedText = [caption makeFormattedCommentTextFromUnformattedCommentText];
@@ -77,6 +76,22 @@
             weakSelf.profileImageView.image = image;
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
+    
+    // set like button based on if current user liked
+    self.likeButton.selected = [self.post isLikedByUser:MyUser.currentUser];
+}
+
+
+
+- (void)toggleLike:(MyUser *)user withCompletion:completion {
+    
+    if (!self.likeButton.selected) {
+        [self.post addLike:MyUser.currentUser withCompletion:completion];
+    }
+    else {
+        [self.post removeLike:MyUser.currentUser withCompletion:completion];
+    }
+    self.likeButton.selected = !self.likeButton.selected;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

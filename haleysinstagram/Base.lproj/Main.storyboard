@@ -81,6 +81,9 @@
                                                     </constraints>
                                                     <state key="normal" image="heart-outline"/>
                                                     <state key="selected" image="heart-filled"/>
+                                                    <connections>
+                                                        <action selector="didTapLikeButton:" destination="l54-Sn-emk" eventType="touchUpInside" id="QgB-Bd-kUn"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVl-lA-Av7">
                                                     <rect key="frame" x="60" y="442" width="25" height="25"/>
@@ -117,6 +120,7 @@
                                         <connections>
                                             <outlet property="captionLabel" destination="yE9-jV-szx" id="tdE-0Z-0u3"/>
                                             <outlet property="dateLabel" destination="1UA-9O-b4P" id="Y0T-dD-567"/>
+                                            <outlet property="likeButton" destination="5GQ-we-a2I" id="LRA-pF-OXd"/>
                                             <outlet property="photoImageView" destination="I3s-BU-89A" id="Oh4-A4-Shi"/>
                                             <outlet property="profileImageView" destination="nwt-5s-dnV" id="88M-OW-FPV"/>
                                             <outlet property="usernameLabel" destination="fJ1-Yq-BTb" id="357-jf-Sbl"/>

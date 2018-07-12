@@ -20,5 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+
+- (void)toggleLike:(MyUser *)user withCompletion:completion;
 
 @end
