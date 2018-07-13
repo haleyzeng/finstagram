@@ -25,6 +25,7 @@
     self.usernameLabel.text = username;
     
     [self updateCaptionLabel];
+    [self updateViewCommentsButton];
         
     NSDate *createdAtDate = self.post.createdAt;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -120,6 +121,19 @@
     }
     else {
         self.captionLabel.text = nil;
+    }
+}
+
+- (void)updateViewCommentsButton {
+    if (self.post.comments.count == 0) {
+        self.viewCommentsButtonHeightConstraint.constant = 0;
+        self.viewCommentsButtonToBottomConstraint.constant = 0;
+        self.viewCommentsButton.hidden = YES;
+    }
+    else {
+        self.viewCommentsButtonHeightConstraint.constant = 30;
+        self.viewCommentsButtonToBottomConstraint.constant = 8;
+        self.viewCommentsButton.hidden = NO;
     }
 }
 

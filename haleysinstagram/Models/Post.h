@@ -18,7 +18,7 @@
 @property (nonatomic, strong) PFFile * _Nullable image;
 
 @property (nonatomic, strong) NSArray * _Nullable likedBy;
-@property (nonatomic, strong) NSMutableArray * _Nullable comments;
+@property (nonatomic, strong) NSArray * _Nullable comments;
 
 + (void)postUserImage:(UIImage * _Nullable)image
           withCaption:(NSString * _Nullable)caption

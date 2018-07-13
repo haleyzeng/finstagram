@@ -24,8 +24,8 @@
     newPost.caption = caption;
     newPost.image = [MyUser getPFFileFromImage:image];
     
-    newPost.likedBy = [[NSMutableArray alloc] init];
-    newPost.comments = [[NSMutableArray alloc] init];
+    newPost.likedBy = [[NSArray alloc] init];
+    newPost.comments = [[NSArray alloc] init];
     
     [newPost saveInBackgroundWithBlock:completion];
 }
