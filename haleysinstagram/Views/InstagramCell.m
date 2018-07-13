@@ -125,6 +125,7 @@
 }
 
 - (void)updateViewCommentsButton {
+    NSLog(@"comments array: %@", self.post.comments);
     NSUInteger count = self.post.comments.count;
     if (count == 0) {
         self.viewCommentsButtonHeightConstraint.constant = 0;

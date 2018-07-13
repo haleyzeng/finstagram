@@ -9,6 +9,7 @@
 #import "CommentCell.h"
 
 #import "UIImageView+AFNetworking.h"
+#import "DateTools.h"
 
 @implementation CommentCell
 
@@ -19,33 +20,51 @@
 
 - (void)setComment:(Comment *)comment {
     _comment = comment;
-    NSAttributedString *formattedCommentText = [comment makeFormattedCommentTextFromUnformattedCommentText];
+    
+    // set comment text with username bolded
+    NSAttributedString *formattedCommentText = [self.comment makeFormattedCommentTextFromUnformattedCommentText];
     self.commentTextLabel.attributedText = formattedCommentText;
-    __weak CommentCell *weakSelf = self;
+    
+    // set comment created at date
+    NSDate *createdAtDate = self.comment.createdAt;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"E MMM d HH:mm:ss Z y"];
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterShortStyle;
+    NSString *relativeDate = [NSDate shortTimeAgoSinceDate:createdAtDate];
+    self.commentCreatedAtLabel.text = relativeDate;
+    
     // set post's user's profile icon imageview
-    NSURL *profilePhotoURL = [NSURL URLWithString:self.comment.post.author.profileImage.url];
+    MyUser *commenter = comment.author;
+    [commenter fetchIfNeeded];
+    __weak CommentCell *weakSelf = self;
+    NSURL *profilePhotoURL = [NSURL URLWithString:commenter.profileImage.url];
     NSURLRequest *profilePicRequest = [NSURLRequest requestWithURL:profilePhotoURL];;
-    [self.commenterImageView setImageWithURLRequest:profilePicRequest placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
-        // imageResponse will be nil if the image is cached
-        if (imageResponse) {
-            weakSelf.commenterImageView.alpha = 0.0;
-            weakSelf.commenterImageView.image = image;
-            
-            //Animate UIImageView back to alpha 1 over 0.3sec
-            [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.commenterImageView.alpha = 1.0;
-            }];
-        }
-        else {
-            weakSelf.commenterImageView.image = image;
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
+    [self.commenterImageView setImageWithURLRequest:profilePicRequest
+                                   placeholderImage:nil
+                                            success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                                // imageResponse will be nil if the image is cached
+                                                if (imageResponse) {
+                                                    weakSelf.commenterImageView.alpha = 0.0;
+                                                    weakSelf.commenterImageView.image = image;
+                                                    
+                                                    //Animate UIImageView back to alpha 1 over 0.3sec
+                                                    [UIView animateWithDuration:0.3 animations:^{
+                                                        weakSelf.commenterImageView.alpha = 1.0;
+                                                    }];
+                                                }
+                                                else {
+                                                    weakSelf.commenterImageView.image = image;
+                                                }
+                                            } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+                                                
+                                            }];
     
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

@@ -375,6 +375,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QwF-K2-GFj" firstAttribute="trailing" secondItem="CDS-3b-lcC" secondAttribute="trailing" id="4Sb-SZ-hNw"/>
                             <constraint firstItem="sJj-Sp-RFT" firstAttribute="leading" secondItem="CDS-3b-lcC" secondAttribute="leading" constant="15" id="INU-Wh-E7x"/>
@@ -385,6 +386,9 @@
                             <constraint firstItem="QwF-K2-GFj" firstAttribute="leading" secondItem="CDS-3b-lcC" secondAttribute="leading" id="ufH-iO-2Va"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CDS-3b-lcC"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="kCI-Vi-wAc" appends="YES" id="AOO-fd-DOC"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="commentTextField" destination="3Xv-1f-rvQ" id="mlh-M4-HIc"/>
@@ -395,6 +399,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGw-Vp-pjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="kCI-Vi-wAc">
+                    <connections>
+                        <action selector="onTap:" destination="WKI-Pb-5nG" id="Py6-cC-iSb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="6530.3999999999996" y="377.36131934032989"/>
         </scene>

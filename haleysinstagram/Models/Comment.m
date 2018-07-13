@@ -30,10 +30,12 @@
 }
 
 - (NSAttributedString *)makeFormattedCommentTextFromUnformattedCommentText {
+    MyUser *commenter = self.author;
+    [commenter fetchIfNeeded];
     
     NSMutableAttributedString *formattedCommentText = [[NSMutableAttributedString alloc] initWithString:self.unformattedCommentText];
     
-    NSRange range = NSMakeRange(0, self.author.username.length);
+    NSRange range = NSMakeRange(0, commenter.username.length);
     
     UIFont *font = [UIFont systemFontOfSize:17.0 weight:UIFontWeightBold];
     
@@ -50,7 +52,11 @@
                  withText:(NSString *)commentText
            withCompletion:(id)completion {
     Comment *comment = [[Comment alloc] initWithPost:post author:MyUser.currentUser commentContent:commentText];
-    [comment saveInBackgroundWithBlock:completion];
+     NSMutableArray *mutableCommentsArray = [NSMutableArray arrayWithArray:post.comments];
+    [mutableCommentsArray addObject:comment];
+    post.comments = [mutableCommentsArray copy];
+    [post saveInBackgroundWithBlock:completion];
+   // [comment saveInBackgroundWithBlock:completion];
 }
 
 @end

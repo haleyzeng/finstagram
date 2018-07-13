@@ -16,7 +16,6 @@
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *comments;
 
 @property (weak, nonatomic) IBOutlet UIStackView *commenterStackView;
 @property (weak, nonatomic) IBOutlet UIImageView *commenterProfileIcon;
@@ -30,21 +29,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.comments.count;
+    return self.post.comments.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CommentCell *commentCell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
-    commentCell.comment = self.comments[indexPath.row];
+    CommentCell *commentCell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    commentCell.comment = self.post.comments[indexPath.row];
+    NSLog(@"cell comment was set");
+    
     return commentCell;
 }
 
-
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:YES];
+}
 
 - (IBAction)didTapPost:(id)sender {
     [Comment postCommentOnPost:self.post
@@ -58,6 +64,8 @@
                     }
                     else {
                         NSLog(@"successfully posted comment");
+                        self.commentTextField.text = @"";
+                        [self.tableView reloadData];
                     }
                 }];
 }
