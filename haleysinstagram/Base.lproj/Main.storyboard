@@ -95,6 +95,9 @@
                                                         <constraint firstAttribute="width" constant="25" id="Nch-aH-9aC"/>
                                                     </constraints>
                                                     <state key="normal" image="chat"/>
+                                                    <connections>
+                                                        <action selector="didTapViewComments:" destination="l54-Sn-emk" eventType="touchUpInside" id="GDX-3j-cJP"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0 likes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1L-k0-tfv">
                                                     <rect key="frame" x="15" y="475" width="53" height="20.5"/>

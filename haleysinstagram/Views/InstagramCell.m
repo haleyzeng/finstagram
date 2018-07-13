@@ -125,15 +125,23 @@
 }
 
 - (void)updateViewCommentsButton {
-    if (self.post.comments.count == 0) {
+    NSUInteger count = self.post.comments.count;
+    if (count == 0) {
         self.viewCommentsButtonHeightConstraint.constant = 0;
         self.viewCommentsButtonToBottomConstraint.constant = 0;
         self.viewCommentsButton.hidden = YES;
+        self.viewCommentsButton.enabled = NO;
+        [self.viewCommentsButton setTitle:nil forState:UIControlStateNormal];
     }
     else {
         self.viewCommentsButtonHeightConstraint.constant = 30;
         self.viewCommentsButtonToBottomConstraint.constant = 8;
         self.viewCommentsButton.hidden = NO;
+        self.viewCommentsButton.enabled = YES;
+        if (count == 1)
+            [self.viewCommentsButton setTitle:@"View 1 comment" forState:UIControlStateNormal];
+        else
+            [self.viewCommentsButton setTitle:[NSString stringWithFormat:@"View %lu comments", count] forState: UIControlStateNormal];
     }
 }
 
