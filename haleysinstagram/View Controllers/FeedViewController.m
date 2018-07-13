@@ -211,27 +211,24 @@
 
 - (IBAction)didTapViewComments:(id)sender {
     UIButton *button = sender;
-    InstagramCell *tappedCell = (InstagramCell *)button.superview.superview;
+    InstagramCell *tappedCell = (InstagramCell *)button.superview.superview.superview;
     [self performSegueWithIdentifier:@"goToCommentsSegue" sender:tappedCell];
 }
 
 - (IBAction)didTapWriteCommentButton:(id)sender {
     UIButton *button = sender;
-    InstagramCell *tappedCell = (InstagramCell *)button.superview.superview;
+    InstagramCell *tappedCell = (InstagramCell *)button.superview.superview.superview.superview;
     [self performSegueWithIdentifier:@"goToCommentsAndWriteSegue" sender:tappedCell];
 }
 
 
 - (IBAction)didTapLikeButton:(id)sender {
     UIButton *button = (UIButton *)sender;
-    InstagramCell *cell = (InstagramCell *) button.superview.superview;
+    InstagramCell *cell = (InstagramCell *) button.superview.superview.superview.superview;
     [cell toggleLike:MyUser.currentUser withCompletion:^(BOOL succeeded, NSError * _Nullable error){
         if (error) {
             UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error toggling like" withMessage:error.localizedDescription];
             [self presentViewController:alert animated:YES completion:nil];
-        }
-        else {
-            NSLog(@"successfully toggled like");
         }
     }];
     // in case the "# likes" line is being added/taken away,

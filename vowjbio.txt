@@ -1,0 +1,29 @@
+Unable to simultaneously satisfy constraints.
+	Probably at least one of the constraints in the following list is one you don't want. 
+	Try this: 
+		(1) look at each constraint and try to figure out which you don't expect; 
+		(2) find the code that added the unwanted constraint or constraints and fix it. 
+(
+    "<NSLayoutConstraint:0x6040004819f0 UIImageView:0x7fe61d25bd20.width == UIImageView:0x7fe61d25bd20.height   (active)>",
+    "<NSLayoutConstraint:0x604000481c20 UIImageView:0x7fe61d25c6f0.height == 40   (active)>",
+    "<NSLayoutConstraint:0x604000481720 UIButton:0x7fe61d25a770'View 1 comment'.height == 30   (active)>",
+    "<NSLayoutConstraint:0x604000481590 UIButton:0x7fe61d25b2d0.height == 25   (active)>",
+    "<NSLayoutConstraint:0x604000481ea0 V:|-(11)-[UIImageView:0x7fe61d25c6f0]   (active, names: '|':UITableViewCellContentView:0x7fe61d25b5f0 )>",
+    "<NSLayoutConstraint:0x604000481f40 V:[UIImageView:0x7fe61d25c6f0]-(8)-[UIImageView:0x7fe61d25bd20]   (active)>",
+    "<NSLayoutConstraint:0x604000481f90 H:|-(0)-[UIImageView:0x7fe61d25bd20]   (active, names: '|':UITableViewCellContentView:0x7fe61d25b5f0 )>",
+    "<NSLayoutConstraint:0x604000481fe0 H:[UIImageView:0x7fe61d25bd20]-(0)-|   (active, names: '|':UITableViewCellContentView:0x7fe61d25b5f0 )>",
+    "<NSLayoutConstraint:0x6040004821c0 V:[UIImageView:0x7fe61d25bd20]-(8)-[UIButton:0x7fe61d25b2d0]   (active)>",
+    "<NSLayoutConstraint:0x6040004823a0 V:[UIButton:0x7fe61d25b2d0]-(8)-[UILabel:0x7fe61d25cc00'1 like']   (active)>",
+    "<NSLayoutConstraint:0x6040004823f0 V:[UILabel:0x7fe61d25cc00'1 like']-(4)-[UILabel:0x7fe61d25bf50'a This is a super long th...']   (active)>",
+    "<NSLayoutConstraint:0x6040004824e0 V:[UIButton:0x7fe61d25a770'View 1 comment']-(8)-|   (active, names: '|':UITableViewCellContentView:0x7fe61d25b5f0 )>",
+    "<NSLayoutConstraint:0x604000482530 V:[UILabel:0x7fe61d25bf50'a This is a super long th...']-(0)-[UIButton:0x7fe61d25a770'View 1 comment']   (active)>",
+    "<NSLayoutConstraint:0x60c000298b00 'UIView-Encapsulated-Layout-Height' UITableViewCellContentView:0x7fe61d25b5f0.height == 534.333   (active)>",
+    "<NSLayoutConstraint:0x60c000298970 'UIView-Encapsulated-Layout-Width' UITableViewCellContentView:0x7fe61d25b5f0.width == 414   (active)>"
+)
+
+Will attempt to recover by breaking constraint 
+<NSLayoutConstraint:0x604000481c20 UIImageView:0x7fe61d25c6f0.height == 40   (active)>
+
+Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
+The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKit/UIView.h> may also be helpful.
+2018-07-12 22:32:54.195172-0700 haleysinstagram[77122:10086960] Warning: A long-running operation is being ex

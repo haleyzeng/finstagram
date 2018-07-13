@@ -26,6 +26,10 @@
     
     [self updateCaptionLabel];
     [self updateViewCommentsButton];
+    [self updateLikeCountLabel];
+    
+    // set like button based on if current user liked
+    self.likeButton.selected = [self.post isLikedByUser:MyUser.currentUser];
     
     NSDate *createdAtDate = self.post.createdAt;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -76,10 +80,6 @@
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
     
-    // set like button based on if current user liked
-    self.likeButton.selected = [self.post isLikedByUser:MyUser.currentUser];
-    
-    [self updateLikeCountLabel];
 }
 
 
@@ -99,19 +99,18 @@
 - (void)updateLikeCountLabel {
     NSUInteger count = self.post.likedBy.count;
     if (count == 0) {
-        self.likeCountLabelToCaptionLabelConstraint.constant = 0;
-        self.likeCountLabel.text = nil;
+        self.likeCountLabelHeightConstraint.constant = 0;
+        self.likeCountLabel.hidden = YES;
     }
     else {
-        [self.likeCountLabel sizeToFit];
-        self.likeCountLabelToCaptionLabelConstraint.constant = 4;
+        self.likeCountLabelHeightConstraint.constant = 21;
+        self.likeCountLabel.hidden = NO;
         if (count == 1) {
             self.likeCountLabel.text = @"1 like";
         }
         else {
             self.likeCountLabel.text = [NSString stringWithFormat:@"%lu likes", self.post.likedBy.count];
         }
-        [self.likeCountLabel sizeToFit];
     }
 }
 
@@ -119,26 +118,27 @@
     if (![self.post.caption isEqualToString:@""]) {
         Comment *caption = [[Comment alloc] initWithPost:self.post author:self.post.author commentContent:self.post.caption];
         
+        self.captionLabel.hidden = NO;
         self.captionLabel.attributedText = [caption makeFormattedCommentTextFromUnformattedCommentText];
     }
     else {
+        self.captionLabel.hidden = YES;
         self.captionLabel.text = nil;
     }
 }
 
 - (void)updateViewCommentsButton {
-    NSLog(@"comments array: %@", self.post.comments);
     NSUInteger count = self.post.comments.count;
     if (count == 0) {
         self.viewCommentsButtonHeightConstraint.constant = 0;
-        self.viewCommentsButtonToBottomConstraint.constant = 0;
+    
         self.viewCommentsButton.hidden = YES;
         self.viewCommentsButton.enabled = NO;
         [self.viewCommentsButton setTitle:nil forState:UIControlStateNormal];
     }
     else {
         self.viewCommentsButtonHeightConstraint.constant = 30;
-        self.viewCommentsButtonToBottomConstraint.constant = 8;
+   
         self.viewCommentsButton.hidden = NO;
         self.viewCommentsButton.enabled = YES;
         if (count == 1)

@@ -88,10 +88,7 @@
     
     CGFloat imagesPerRow = 3;
     CGFloat width = self.collectionView.frame.size.width;
-    NSLog(@"full width: %f", width);
     CGFloat itemWidth = (width - (layout.minimumInteritemSpacing * (imagesPerRow - 1))) / imagesPerRow;
-    
-    NSLog(@"itemWidth %f", itemWidth);
     
     CGFloat itemHeight = itemWidth;
     
@@ -197,9 +194,6 @@
         Post *post = tappedCell.post;
         DetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.post = post;
-    }
-    else if ([segue.identifier isEqualToString:@"goToProfileViewSegue"]) {
-        NSLog(@"sender: %@", sender);
     }
     
 }

@@ -49,7 +49,6 @@
 #pragma mark - Bar Button Functionality
 
 - (IBAction)didTapCancel:(id)sender {
-    NSLog(@"tapped cancel");
     [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
@@ -58,12 +57,10 @@
             withCaption:self.composeCaptionTextView.text
          withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
              if (succeeded) {
-                 NSLog(@"success");
                  [self.delegate didFinishPost];
                  [self dismissViewControllerAnimated:YES completion:^{}];
              }
              else {
-                 NSLog(@"failure");
                  UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error posting" withMessage:error.localizedDescription];
                  [self presentViewController:alert animated:YES completion:nil];
              }

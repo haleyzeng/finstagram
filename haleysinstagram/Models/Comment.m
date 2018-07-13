@@ -55,6 +55,7 @@
     NSMutableArray *mutableCommentsArray = [NSMutableArray arrayWithArray:post.comments];
     [mutableCommentsArray addObject:comment];
     post.comments = [mutableCommentsArray copy];
+    NSLog(@"saving the comment to the post");
     [post saveInBackgroundWithBlock:completion];
     // [comment saveInBackgroundWithBlock:completion];
 }

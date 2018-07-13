@@ -23,13 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *viewCommentsButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeCountLabelHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewCommentsButtonHeightConstraint;
-
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeButtonToLikeCountLabelConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeCountLabelToCaptionLabelConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *captionLabelToViewCommentsButtonConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewCommentsButtonToBottomConstraint;
 
 - (void)toggleLike:(MyUser *)user withCompletion:completion;
 

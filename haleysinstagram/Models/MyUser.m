@@ -19,13 +19,11 @@
 + (PFFile *)getPFFileFromImage:(UIImage * _Nullable)image {
     // check if image is not nil
     if (!image) {
-        NSLog(@"no image");
         return nil;
     }
     NSData *imageData = UIImagePNGRepresentation(image);
     // get image data and check if that is not nil
     if (!imageData) {
-        NSLog(@"no image data");
         return nil;
     }
     return [PFFile fileWithName:@"image.png" data:imageData];
@@ -36,7 +34,6 @@
     newUser.username = username;
     newUser.password = password;
     UIImage *image = [UIImage imageNamed:@"default.png"];
-    NSLog(@"user image: %@", image);
     newUser.profileImage = [MyUser getPFFileFromImage:image];
     [newUser signUpInBackgroundWithBlock:completion];
 }
