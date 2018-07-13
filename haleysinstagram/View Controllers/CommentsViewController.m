@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField;
 @property (weak, nonatomic) IBOutlet UIButton *postCommentButton;
 
+@property (strong, nonatomic) NSArray *comments;
 
 @end
 
@@ -34,10 +35,30 @@
     [self setupCommenterIcon];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView reloadData];
+    [self fetchComments];
     if (self.writeCommentImmediately)
         [self.commentTextField becomeFirstResponder];
 }
+
+- (void)fetchComments {
+    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"post" equalTo:self.post];
+    [query includeKey:@"author"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable comments, NSError * _Nullable error) {
+        if (error != nil) {
+            UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error loading comments" withMessage:error.localizedDescription];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else {
+            self.comments = comments;
+            [self.tableView reloadData];
+        }
+        
+    }];
+}
+
 
 - (void)setupCommenterIcon {
     NSURL *photoURL = [NSURL URLWithString:MyUser.currentUser.profileImage.url];
@@ -65,12 +86,12 @@
 #pragma mark - UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.post.comments.count;
+    return self.comments.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentCell *commentCell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    commentCell.comment = self.post.comments[indexPath.row];
+    commentCell.comment = self.comments[indexPath.row];
     
     return commentCell;
 }

@@ -36,7 +36,6 @@
     
     // set post's user's profile icon imageview
     MyUser *commenter = comment.author;
-    [commenter fetchIfNeeded];
     __weak CommentCell *weakSelf = self;
     NSURL *profilePhotoURL = [NSURL URLWithString:commenter.profileImage.url];
     NSURLRequest *profilePicRequest = [NSURLRequest requestWithURL:profilePhotoURL];;

@@ -50,7 +50,6 @@
     [query includeKey:@"author"];
     [query includeKey:@"image"];
     [query includeKey:@"likedBy"];
-    [query includeKey:@"comments"];
     query.limit = 20;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {

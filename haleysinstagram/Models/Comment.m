@@ -33,7 +33,6 @@
     NSMutableAttributedString *formattedCommentText = [[NSMutableAttributedString alloc] initWithString:self.unformattedCommentText];
     
     MyUser *commenter = self.author;
-    [commenter fetchIfNeeded];
     
     NSRange range = NSMakeRange(0, commenter.username.length);
     
