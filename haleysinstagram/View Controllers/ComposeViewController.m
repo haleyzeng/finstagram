@@ -30,6 +30,7 @@
     UIImage *resizedImage = [self resizeImage:self.image withSize:newSize];
     self.image = resizedImage;
     [self.composeImageView setImage:self.image];
+    [self.composeCaptionTextView becomeFirstResponder];
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {

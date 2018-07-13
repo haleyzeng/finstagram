@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "CommentsViewController.h"
 #import "Comment.h"
+#import "InstagramCell.h"
 
 @interface DetailViewController ()
 
@@ -155,6 +156,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"fromDetailGoToCommentsSegue"]){
         CommentsViewController *commentsViewController = (CommentsViewController *)[segue destinationViewController];
+        InstagramCell *cell = (InstagramCell *) self.delegate;
+        commentsViewController.delegate = cell;
         commentsViewController.post = self.post;
         commentsViewController.writeCommentImmediately = YES;
     }

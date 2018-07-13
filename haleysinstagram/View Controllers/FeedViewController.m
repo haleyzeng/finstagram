@@ -21,7 +21,7 @@
 #import "Post.h"
 #import "ErrorAlert.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ComposeViewDelegate, CommentsViewControllerDelegate>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ComposeViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
@@ -238,11 +238,6 @@
 
 #pragma mark - CommentsViewControllerDelegate
 
-- (void)didPostAComment {
-    NSLog(@"comment was posted");
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-}
 
 #pragma mark - Navigation
 
@@ -261,13 +256,13 @@
      }
      else if ([segue.identifier isEqualToString:@"goToCommentsSegue"]) {
          CommentsViewController *commentsViewController = [segue destinationViewController];
-         commentsViewController.delegate = self;
+         commentsViewController.delegate = tappedCell;
          commentsViewController.post = tappedCell.post;
          commentsViewController.writeCommentImmediately = NO;
      }
      else if ([segue.identifier isEqualToString:@"goToCommentsAndWriteSegue"]) {
          CommentsViewController *commentsViewController = [segue destinationViewController];
-         commentsViewController.delegate = self;
+         commentsViewController.delegate = tappedCell;
          commentsViewController.post = tappedCell.post;
          commentsViewController.writeCommentImmediately = YES;
      }

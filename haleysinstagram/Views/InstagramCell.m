@@ -155,6 +155,14 @@
     [tableView endUpdates];
 }
 
+- (void)didPostAComment {
+    NSLog(@"comment was posted");
+    [self updateViewCommentsButton];
+    UITableView *tableView = (UITableView *)self.superview;
+    [tableView beginUpdates];
+    [tableView endUpdates];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     

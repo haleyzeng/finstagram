@@ -1,6 +1,6 @@
-# Project 4 - *Name of App Here*
+# Project 4 - *Instaounce*
 
-**Name of your app** is a photo sharing app using Parse as its backend.
+**Instaounce** is a photo sharing app using Parse as its backend.
 
 Time spent: **X** hours spent in total
 
@@ -29,7 +29,7 @@ The following **optional** features are implemented:
 - [x] Allow the logged in user to add a profile photo (tap on profile icon)
 - [x] Display the profile photo with each post
 - [x] Tapping on a post's username or profile photo goes to that user's profile page
-- [x] User can comment on a post and see all comments for each post in the post details screen.
+- [x] User can comment on a post and see all comments for each post in the post details screen. (Click on the reply icon when in detail view)
 - [x] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 
@@ -42,7 +42,6 @@ The following **additional** features are implemented:
 - [x] Like and comment count will say singular form of word when only 1 like/comment
 - [x] # of likes label is not present if likes are 0; will appear after being liked
 - [x] Clicking on the reply button will present keyboard and allow typing immediately (don't have to click on text field)
-
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -62,6 +61,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [DateTools](https://github.com/MatthewYork/DateTools) - date formatting library
+- [Heroku App with Parse Server](https://www.heroku.com/home)
 - Heart and filled heart icons made by [Smashicons](https://www.smashicons.com/), retrieved from [flaticon.com](https://flaticon.com)
 - Reply icon made by [iconice](https://iconice.com), retrieved from [flaticon.com](https://flaticon.com)
 

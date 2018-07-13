@@ -11,8 +11,9 @@
 #import <UIKit/UIKit.h>
 #import "UIImageView+AFNetworking.h"
 #import "DetailViewController.h"
+#import "CommentsViewController.h"
 
-@interface InstagramCell : UITableViewCell <DetailViewControllerDelegate>
+@interface InstagramCell : UITableViewCell <DetailViewControllerDelegate, CommentsViewControllerDelegate>
 
 @property (strong, nonatomic) Post *post;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
