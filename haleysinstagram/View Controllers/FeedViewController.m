@@ -21,7 +21,7 @@
 #import "Post.h"
 #import "ErrorAlert.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ComposeViewDelegate>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ComposeViewDelegate, CommentsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
@@ -194,26 +194,6 @@
 
 #pragma mark - Table Cell Button Functionality
 
-- (IBAction)didTapLikeButton:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    InstagramCell *cell = (InstagramCell *) button.superview.superview;
-    [cell toggleLike:MyUser.currentUser withCompletion:^(BOOL succeeded, NSError * _Nullable error){
-        if (error) {
-            UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error toggling like" withMessage:error.localizedDescription];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-        else {
-            NSLog(@"successfully toggled like");
-        }
-    }];
-    // in case the "# likes" line is being added/taken away,
-    // allow tableview cell to readjust tableview size
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-}
-
-#pragma mark - Navigation
-
 - (IBAction)didTapUsernameLabel:(id)sender {
     
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
@@ -235,6 +215,40 @@
     [self performSegueWithIdentifier:@"goToCommentsSegue" sender:tappedCell];
 }
 
+- (IBAction)didTapWriteCommentButton:(id)sender {
+    UIButton *button = sender;
+    InstagramCell *tappedCell = (InstagramCell *)button.superview.superview;
+    [self performSegueWithIdentifier:@"goToCommentsAndWriteSegue" sender:tappedCell];
+}
+
+
+- (IBAction)didTapLikeButton:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    InstagramCell *cell = (InstagramCell *) button.superview.superview;
+    [cell toggleLike:MyUser.currentUser withCompletion:^(BOOL succeeded, NSError * _Nullable error){
+        if (error) {
+            UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error toggling like" withMessage:error.localizedDescription];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        else {
+            NSLog(@"successfully toggled like");
+        }
+    }];
+    // in case the "# likes" line is being added/taken away,
+    // allow tableview cell to readjust tableview size
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
+#pragma mark - CommentsViewControllerDelegate
+
+- (void)didPostAComment {
+    NSLog(@"comment was posted");
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
+#pragma mark - Navigation
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      InstagramCell *tappedCell = sender;
@@ -250,7 +264,15 @@
      }
      else if ([segue.identifier isEqualToString:@"goToCommentsSegue"]) {
          CommentsViewController *commentsViewController = [segue destinationViewController];
+         commentsViewController.delegate = self;
          commentsViewController.post = tappedCell.post;
+         commentsViewController.writeCommentImmediately = NO;
+     }
+     else if ([segue.identifier isEqualToString:@"goToCommentsAndWriteSegue"]) {
+         CommentsViewController *commentsViewController = [segue destinationViewController];
+         commentsViewController.delegate = self;
+         commentsViewController.post = tappedCell.post;
+         commentsViewController.writeCommentImmediately = YES;
      }
  }
 

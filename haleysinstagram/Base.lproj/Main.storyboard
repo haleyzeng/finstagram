@@ -96,7 +96,7 @@
                                                     </constraints>
                                                     <state key="normal" image="chat"/>
                                                     <connections>
-                                                        <action selector="didTapViewComments:" destination="l54-Sn-emk" eventType="touchUpInside" id="GDX-3j-cJP"/>
+                                                        <action selector="didTapWriteCommentButton:" destination="l54-Sn-emk" eventType="touchUpInside" id="3HM-M7-Esw"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0 likes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1L-k0-tfv">
@@ -178,6 +178,7 @@
                         <outlet property="tableView" destination="3bu-pq-7Eu" id="DaB-7b-NIR"/>
                         <segue destination="5rd-0l-yDg" kind="show" identifier="goToProfileViewSegue" id="yyU-ce-6M7"/>
                         <segue destination="WKI-Pb-5nG" kind="show" identifier="goToCommentsSegue" id="hak-MY-Ho5"/>
+                        <segue destination="WKI-Pb-5nG" kind="show" identifier="goToCommentsAndWriteSegue" id="dm7-Mf-v2S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qN9-6M-tgG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -865,6 +866,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="LNx-XJ-e86"/>
         <segue reference="yyU-ce-6M7"/>
+        <segue reference="dm7-Mf-v2S"/>
         <segue reference="ck9-td-W1b"/>
     </inferredMetricsTieBreakers>
 </document>

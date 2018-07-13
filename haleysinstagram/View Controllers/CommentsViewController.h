@@ -10,8 +10,16 @@
 
 #import "Post.h"
 
+@protocol CommentsViewControllerDelegate
+
+- (void)didPostAComment;
+
+@end
+
 @interface CommentsViewController : UIViewController
 
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) id<CommentsViewControllerDelegate> delegate;
+@property (nonatomic) BOOL writeCommentImmediately;
 
 @end

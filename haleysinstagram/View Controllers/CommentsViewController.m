@@ -9,9 +9,11 @@
 #import "CommentsViewController.h"
 
 #import <Parse/Parse.h>
+#import "UIImageView+AFNetworking.h"
 #import "CommentCell.h"
 #import "Comment.h"
 #import "ErrorAlert.h"
+
 
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -29,9 +31,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupCommenterIcon];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView reloadData];
+    if (self.writeCommentImmediately)
+        [self.commentTextField becomeFirstResponder];
+}
+
+- (void)setupCommenterIcon {
+    NSURL *photoURL = [NSURL URLWithString:MyUser.currentUser.profileImage.url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:photoURL];
+    __weak CommentsViewController *weakSelf = self;
+    [self.commenterProfileIcon setImageWithURLRequest:request
+                                     placeholderImage:nil
+                                              success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                                  // imageResponse will be nil if the image is cached
+                                                  if (imageResponse) {
+                                                      weakSelf.commenterProfileIcon.alpha = 0.0;
+                                                      weakSelf.commenterProfileIcon.image = image;
+                                                      
+                                                      //Animate UIImageView back to alpha 1 over 0.3sec
+                                                      [UIView animateWithDuration:0.3 animations:^{
+                                                          weakSelf.commenterProfileIcon.alpha = 1.0;
+                                                      }];
+                                                  }
+                                                  else {
+                                                      weakSelf.commenterProfileIcon.image = image;
+                                                  }
+                                              } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
 }
 
 #pragma mark - UITableViewDelegate
@@ -43,14 +71,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CommentCell *commentCell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
     commentCell.comment = self.post.comments[indexPath.row];
-    NSLog(@"cell comment was set");
     
     return commentCell;
 }
 
-- (IBAction)onTap:(id)sender {
-    [self.view endEditing:YES];
-}
+#pragma mark - Button Functionality
 
 - (IBAction)didTapPost:(id)sender {
     [Comment postCommentOnPost:self.post
@@ -66,23 +91,24 @@
                         NSLog(@"successfully posted comment");
                         self.commentTextField.text = @"";
                         [self.tableView reloadData];
+                        [self.delegate didPostAComment];
                     }
                 }];
 }
 
-- (void)fetchComments {
-    
+- (IBAction)onTap:(id)sender {
+    [self.view endEditing:YES];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark - Memory Warning
 
