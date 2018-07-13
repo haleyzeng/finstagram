@@ -51,12 +51,9 @@
                  withText:(NSString *)commentText
            withCompletion:(id)completion {
     Comment *comment = [[Comment alloc] initWithPost:post author:MyUser.currentUser commentContent:commentText];
-    NSMutableArray *mutableCommentsArray = [NSMutableArray arrayWithArray:post.comments];
-    [mutableCommentsArray addObject:comment];
-    post.comments = [mutableCommentsArray copy];
-    NSLog(@"saving the comment to the post");
-    [post saveInBackgroundWithBlock:completion];
-    // [comment saveInBackgroundWithBlock:completion];
+    post.commentCount += 1;
+    [post saveInBackground];
+    [comment saveInBackgroundWithBlock:completion];
 }
 
 @end

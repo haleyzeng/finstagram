@@ -11,7 +11,7 @@
 
 @implementation Post
 
-@dynamic author, caption, image, likedBy, comments;
+@dynamic author, caption, image, likedBy, commentCount;
 
 + (nonnull NSString *)parseClassName {
     return @"Post";
@@ -25,7 +25,7 @@
     newPost.image = [MyUser getPFFileFromImage:image];
     
     newPost.likedBy = [[NSArray alloc] init];
-    newPost.comments = [[NSArray alloc] init];
+    newPost.commentCount = 0;
     
     [newPost saveInBackgroundWithBlock:completion];
 }

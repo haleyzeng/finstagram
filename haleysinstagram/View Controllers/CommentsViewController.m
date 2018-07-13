@@ -42,7 +42,7 @@
 
 - (void)fetchComments {
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
-    [query orderByDescending:@"createdAt"];
+    [query orderByAscending:@"createdAt"];
     [query whereKey:@"post" equalTo:self.post];
     [query includeKey:@"author"];
     
@@ -111,7 +111,7 @@
                     else {
                         NSLog(@"successfully posted comment");
                         self.commentTextField.text = @"";
-                        [self.tableView reloadData];
+                        [self fetchComments];
                         [self.delegate didPostAComment];
                     }
                 }];
