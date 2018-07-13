@@ -7,13 +7,22 @@
 //
 
 #import "CommentsViewController.h"
-#import "CommentCell.h"
+
 #import <Parse/Parse.h>
+#import "CommentCell.h"
+#import "Comment.h"
+#import "ErrorAlert.h"
 
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *comments;
+
+@property (weak, nonatomic) IBOutlet UIStackView *commenterStackView;
+@property (weak, nonatomic) IBOutlet UIImageView *commenterProfileIcon;
+@property (weak, nonatomic) IBOutlet UITextField *commentTextField;
+@property (weak, nonatomic) IBOutlet UIButton *postCommentButton;
+
 
 @end
 
@@ -21,7 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 #pragma mark - UITableViewDelegate
@@ -38,11 +46,20 @@
 
 
 
-#pragma mark - Memory Warning
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)didTapPost:(id)sender {
+    [Comment postCommentOnPost:self.post
+                      withText:self.commentTextField.text
+                withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if (error) {
+                        UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error posting comment" withMessage:error.localizedDescription];
+                        [self presentViewController:alert
+                                           animated:YES
+                                         completion:nil];
+                    }
+                    else {
+                        NSLog(@"successfully posted comment");
+                    }
+                }];
 }
 
 - (void)fetchComments {
@@ -58,5 +75,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Memory Warning
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

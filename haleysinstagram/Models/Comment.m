@@ -46,6 +46,11 @@
     return (NSAttributedString *)formattedCommentText;
 }
 
-
++ (void)postCommentOnPost:(Post *)post
+                 withText:(NSString *)commentText
+           withCompletion:(id)completion {
+    Comment *comment = [[Comment alloc] initWithPost:post author:MyUser.currentUser commentContent:commentText];
+    [comment saveInBackgroundWithBlock:completion];
+}
 
 @end

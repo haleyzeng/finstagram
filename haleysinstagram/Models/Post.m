@@ -30,6 +30,8 @@
     [newPost saveInBackgroundWithBlock:completion];
 }
 
+
+
 - (void)addLike:(MyUser *)user withCompletion:completion {
     NSRange arrayRange = (NSRange){0, self.likedBy.count};
     

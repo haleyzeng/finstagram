@@ -295,7 +295,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QwF-K2-GFj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="562"/>
+                                <rect key="frame" x="0.0" y="113" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="70" id="Ftv-4f-H6C" customClass="CommentCell">
@@ -346,44 +346,51 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MuZ-jE-omw">
-                                <rect key="frame" x="15" y="570" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="V9f-j3-WXt"/>
-                                    <constraint firstAttribute="width" constant="40" id="phr-tH-AbX"/>
-                                </constraints>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xv-1f-rvQ">
-                                <rect key="frame" x="63" y="575" width="258" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXm-sP-zOC">
-                                <rect key="frame" x="329" y="575" width="31" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="KA9-bs-cGs"/>
-                                </constraints>
-                                <state key="normal" title="Post"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sJj-Sp-RFT">
+                                <rect key="frame" x="15" y="75" width="345" height="30"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MuZ-jE-omw">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MuZ-jE-omw" secondAttribute="height" multiplier="1:1" id="t5t-np-rGQ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xv-1f-rvQ">
+                                        <rect key="frame" x="38" y="0.0" width="268" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXm-sP-zOC">
+                                        <rect key="frame" x="314" y="0.0" width="31" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="KA9-bs-cGs"/>
+                                        </constraints>
+                                        <state key="normal" title="Post"/>
+                                        <connections>
+                                            <action selector="didTapPost:" destination="WKI-Pb-5nG" eventType="touchUpInside" id="HAh-Nx-ep4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QwF-K2-GFj" firstAttribute="trailing" secondItem="CDS-3b-lcC" secondAttribute="trailing" id="4Sb-SZ-hNw"/>
-                            <constraint firstItem="rXm-sP-zOC" firstAttribute="leading" secondItem="3Xv-1f-rvQ" secondAttribute="trailing" constant="8" id="8av-vm-Lyt"/>
-                            <constraint firstItem="3Xv-1f-rvQ" firstAttribute="centerY" secondItem="MuZ-jE-omw" secondAttribute="centerY" id="LHt-tj-ArU"/>
-                            <constraint firstItem="rXm-sP-zOC" firstAttribute="centerY" secondItem="MuZ-jE-omw" secondAttribute="centerY" id="UAs-n1-bH9"/>
-                            <constraint firstItem="MuZ-jE-omw" firstAttribute="top" secondItem="QwF-K2-GFj" secondAttribute="bottom" constant="8" id="akA-QI-zh8"/>
-                            <constraint firstItem="3Xv-1f-rvQ" firstAttribute="leading" secondItem="MuZ-jE-omw" secondAttribute="trailing" constant="8" id="eYn-Lq-V4W"/>
-                            <constraint firstItem="QwF-K2-GFj" firstAttribute="top" secondItem="YqJ-nd-4dH" secondAttribute="top" id="eoS-bm-Cj0"/>
-                            <constraint firstItem="CDS-3b-lcC" firstAttribute="trailing" secondItem="rXm-sP-zOC" secondAttribute="trailing" constant="15" id="mZV-xM-lgO"/>
+                            <constraint firstItem="sJj-Sp-RFT" firstAttribute="leading" secondItem="CDS-3b-lcC" secondAttribute="leading" constant="15" id="INU-Wh-E7x"/>
+                            <constraint firstItem="CDS-3b-lcC" firstAttribute="trailing" secondItem="sJj-Sp-RFT" secondAttribute="trailing" constant="15" id="R4b-da-z6T"/>
+                            <constraint firstItem="QwF-K2-GFj" firstAttribute="top" secondItem="sJj-Sp-RFT" secondAttribute="bottom" constant="8" id="Y1J-Nw-3Km"/>
+                            <constraint firstAttribute="bottom" secondItem="QwF-K2-GFj" secondAttribute="bottom" id="f4w-ZI-yU9"/>
+                            <constraint firstItem="sJj-Sp-RFT" firstAttribute="top" secondItem="CDS-3b-lcC" secondAttribute="top" constant="11" id="iO5-Mw-8PR"/>
                             <constraint firstItem="QwF-K2-GFj" firstAttribute="leading" secondItem="CDS-3b-lcC" secondAttribute="leading" id="ufH-iO-2Va"/>
-                            <constraint firstItem="CDS-3b-lcC" firstAttribute="bottom" secondItem="MuZ-jE-omw" secondAttribute="bottom" constant="8" id="ya0-CA-lXF"/>
-                            <constraint firstItem="MuZ-jE-omw" firstAttribute="leading" secondItem="CDS-3b-lcC" secondAttribute="leading" constant="15" id="zse-Ks-i2d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CDS-3b-lcC"/>
                     </view>
                     <connections>
+                        <outlet property="commentTextField" destination="3Xv-1f-rvQ" id="mlh-M4-HIc"/>
+                        <outlet property="commenterProfileIcon" destination="MuZ-jE-omw" id="gFc-kj-HhL"/>
+                        <outlet property="commenterStackView" destination="sJj-Sp-RFT" id="3ai-UA-G6H"/>
+                        <outlet property="postCommentButton" destination="rXm-sP-zOC" id="Aec-QY-Xkg"/>
                         <outlet property="tableView" destination="QwF-K2-GFj" id="WQo-Pf-p9r"/>
                     </connections>
                 </viewController>

@@ -18,7 +18,14 @@
 @property (strong, nonatomic) MyUser *author;
 @property (strong, nonatomic) NSString *unformattedCommentText;
 
-- (instancetype)initWithPost:(Post *)post author:(MyUser *)author commentContent:(NSString *)commentContent;
++ (void)postCommentOnPost:(Post *)post
+                 withText:(NSString *)commentText
+           withCompletion:completion;
+
+- (instancetype)initWithPost:(Post *)post
+                      author:(MyUser *)author
+              commentContent:(NSString *)commentContent;
+
 - (NSAttributedString *)makeFormattedCommentTextFromUnformattedCommentText;
 
 @end
