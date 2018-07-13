@@ -253,6 +253,7 @@
      if ([segue.identifier isEqualToString:@"goToDetailViewSegue"]) {
          DetailViewController *detailViewController = [segue destinationViewController];
          detailViewController.post = post;
+         detailViewController.delegate = tappedCell;
      }
      else if ([segue.identifier isEqualToString:@"goToProfileViewSegue"]) {
          ProfileViewController *profileViewController = [segue destinationViewController];

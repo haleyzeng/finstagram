@@ -10,9 +10,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UIImageView+AFNetworking.h"
+#import "DetailViewController.h"
 
-@interface InstagramCell : UITableViewCell
-
+@interface InstagramCell : UITableViewCell <DetailViewControllerDelegate>
 
 @property (strong, nonatomic) Post *post;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;

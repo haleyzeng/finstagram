@@ -11,7 +11,7 @@
 #import "DateTools.h"
 #import "Comment.h"
 
-@implementation InstagramCell
+@implementation InstagramCell 
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -146,6 +146,13 @@
         else
             [self.viewCommentsButton setTitle:[NSString stringWithFormat:@"View %lu comments", count] forState: UIControlStateNormal];
     }
+}
+
+- (void)didTapLikeInDetailViewWithCompletion:completion {
+    [self toggleLike:MyUser.currentUser withCompletion:completion];
+    UITableView *tableView = (UITableView *)self.superview;
+    [tableView beginUpdates];
+    [tableView endUpdates];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

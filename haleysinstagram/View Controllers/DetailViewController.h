@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 
+@protocol DetailViewControllerDelegate
+
+- (void)didTapLikeInDetailViewWithCompletion:completion;
+
+@end
+
 
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) id<DetailViewControllerDelegate> delegate;
 
 @end

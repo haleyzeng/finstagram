@@ -32,10 +32,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setupCommenterIcon];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self fetchComments];
+    
     if (self.writeCommentImmediately)
         [self.commentTextField becomeFirstResponder];
 }

@@ -89,7 +89,12 @@
     
     CGFloat imagesPerRow = 3;
     CGFloat width = self.collectionView.frame.size.width;
-    CGFloat itemWidth = (width - (layout.minimumInteritemSpacing * (imagesPerRow - 1))) / imagesPerRow;
+    CGFloat itemWidth = (width -
+                         (layout.minimumInteritemSpacing *
+                          (imagesPerRow - 1)
+                          )
+                         )
+    / imagesPerRow;
     
     CGFloat itemHeight = itemWidth;
     
