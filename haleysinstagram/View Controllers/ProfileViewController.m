@@ -17,6 +17,7 @@
 @interface ProfileViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *postCountLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *photoTapGesture;
@@ -106,10 +107,19 @@
             self.posts = posts;
             [self adjustCollectionViewCellSize];
             [self.collectionView reloadData];
+            [self updatePostCountLabel];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+- (void)updatePostCountLabel {
+    NSUInteger count = self.posts.count;
+    if (count == 1)
+        self.postCountLabel.text = @"1 post";
+    else
+        self.postCountLabel.text = [NSString stringWithFormat:@"%lu posts", count];
 }
 
 #pragma mark - UICollectionViewDelegate
