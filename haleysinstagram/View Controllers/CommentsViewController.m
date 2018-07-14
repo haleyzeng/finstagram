@@ -50,8 +50,12 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable comments, NSError * _Nullable error) {
         if (error != nil) {
-            UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error loading comments" withMessage:error.localizedDescription];
-            [self presentViewController:alert animated:YES completion:nil];
+            UIAlertController *alert = [ErrorAlert
+                                        getErrorAlertWithTitle:@"Error loading comments"
+                                        withMessage:error.localizedDescription];
+            [self presentViewController:alert
+                               animated:YES
+                             completion:nil];
         }
         else {
             self.comments = comments;

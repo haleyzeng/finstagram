@@ -10,14 +10,21 @@
 
 @implementation ErrorAlert
 
-+ (UIAlertController *)getErrorAlertWithTitle:(NSString *)title withMessage:(NSString *)msg {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
++ (UIAlertController *)getErrorAlertWithTitle:(NSString *)title
+                                  withMessage:(NSString *)msg {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Error"
+                                message:msg
+                                preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-    }];
+    UIAlertAction *ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * _Nonnull action) {
+                         }];
     
     [alert addAction:ok];
-
+    
     return alert;
 }
 

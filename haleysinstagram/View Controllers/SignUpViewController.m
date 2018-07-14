@@ -36,30 +36,44 @@
     NSString *username = self.usernameTextField.text;
     NSString *password = self.passwordTextField.text;
     NSString *confirmPassword = self.confirmPasswordTextField.text;
-    if ([username isEqualToString:@""] || [password isEqualToString:@""] || [confirmPassword isEqualToString:@""]) {
+    if ([username isEqualToString:@""] ||
+        [password isEqualToString:@""] ||
+        [confirmPassword isEqualToString:@""]) {
         UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error"
-                          withMessage:@"username namd password required"];
-        [self presentViewController:alert animated:YES completion:nil];
+                                                          withMessage:@"username namd password required"];
+        [self presentViewController:alert
+                           animated:YES
+                         completion:nil];
     }
     else if (![password isEqualToString:confirmPassword]) {
-        UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error" withMessage:@"Passwords do not match"];
-        [self presentViewController:alert animated:YES completion:nil];
+        UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error"
+                                                          withMessage:@"Passwords do not match"];
+        [self presentViewController:alert
+                           animated:YES
+                         completion:nil];
     }
     else {
-        [MyUser createUserWithUsername:username withPassword:password withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (error != nil){
-                UIAlertController *alert = [ErrorAlert getErrorAlertWithTitle:@"Error signing up" withMessage:error.localizedDescription];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-            else {
-                [self performSegueWithIdentifier:@"successfulSignUpSegue" sender:nil];
-            }
-        }];
+        [MyUser createUserWithUsername:username
+                          withPassword:password
+                        withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                            if (error != nil){
+                                UIAlertController *alert = [ErrorAlert
+                                                            getErrorAlertWithTitle:@"Error signing up"
+                                                            withMessage:error.localizedDescription];
+                                [self presentViewController:alert
+                                                   animated:YES
+                                                 completion:nil];
+                            }
+                            else {
+                                [self performSegueWithIdentifier:@"successfulSignUpSegue" sender:nil];
+                            }
+                        }];
     }
 }
 
 - (IBAction)didTapGoToLoginButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [self dismissViewControllerAnimated:YES
+                             completion:^{}];
 }
 
 #pragma mark - Memory Warning
@@ -70,13 +84,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

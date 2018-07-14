@@ -27,7 +27,8 @@
     // resize image to square measuring full screen width
     CGFloat screenWidth = self.view.frame.size.width;
     CGSize newSize = CGSizeMake(screenWidth, screenWidth);
-    UIImage *resizedImage = [self resizeImage:self.image withSize:newSize];
+    UIImage *resizedImage = [self resizeImage:self.image
+                                     withSize:newSize];
     self.image = resizedImage;
     [self.composeImageView setImage:self.image];
     [self.composeCaptionTextView becomeFirstResponder];

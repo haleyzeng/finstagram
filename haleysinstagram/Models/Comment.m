@@ -16,7 +16,9 @@
     return @"Comment";
 }
 
-- (instancetype)initWithPost:(Post *)post author:(MyUser *)author commentContent:(NSString *)commentContent {
+- (instancetype)initWithPost:(Post *)post
+                      author:(MyUser *)author
+              commentContent:(NSString *)commentContent {
     self = [super init];
     self.post = post;
     self.author = author;

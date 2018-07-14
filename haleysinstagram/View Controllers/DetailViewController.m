@@ -50,42 +50,47 @@
     __weak DetailViewController *weakSelf = self;
     NSURL *profilePhotoURL = [NSURL URLWithString:self.post.author.profileImage.url];
     NSURLRequest *profilePicRequest = [NSURLRequest requestWithURL:profilePhotoURL];;
-    [self.profileImageView setImageWithURLRequest:profilePicRequest placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
-        // imageResponse will be nil if the image is cached
-        if (imageResponse) {
-            weakSelf.profileImageView.alpha = 0.0;
-            weakSelf.profileImageView.image = image;
-            
-            //Animate UIImageView back to alpha 1 over 0.3sec
-            [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.profileImageView.alpha = 1.0;
-            }];
-        }
-        else {
-            weakSelf.profileImageView.image = image;
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
+    [self.profileImageView setImageWithURLRequest:profilePicRequest
+                                 placeholderImage:nil
+                                          success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                              // imageResponse will be nil if the image is cached
+                                              if (imageResponse) {
+                                                  weakSelf.profileImageView.alpha = 0.0;
+                                                  weakSelf.profileImageView.image = image;
+                                                  
+                                                  //Animate UIImageView back to alpha 1 over 0.3sec
+                                                  [UIView animateWithDuration:0.3
+                                                                   animations:^{
+                                                                       weakSelf.profileImageView.alpha = 1.0;
+                                                                   }];
+                                              }
+                                              else {
+                                                  weakSelf.profileImageView.image = image;
+                                              }
+                                          } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
 }
 
 - (void)updatePhoto {
     NSURL *photoURL = [NSURL URLWithString:self.post.image.url];
     NSURLRequest *request = [NSURLRequest requestWithURL:photoURL];
     __weak DetailViewController *weakSelf = self;
-    [self.detailImageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
-        // imageResponse will be nil if the image is cached
-        if (imageResponse) {
-            weakSelf.detailImageView.alpha = 0.0;
-            weakSelf.detailImageView.image = image;
-            
-            //Animate UIImageView back to alpha 1 over 0.3sec
-            [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.detailImageView.alpha = 1.0;
-            }];
-        }
-        else {
-            weakSelf.detailImageView.image = image;
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
+    [self.detailImageView setImageWithURLRequest:request
+                                placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                    // imageResponse will be nil if the image is cached
+                                    if (imageResponse) {
+                                        weakSelf.detailImageView.alpha = 0.0;
+                                        weakSelf.detailImageView.image = image;
+                                        
+                                        //Animate UIImageView back to alpha 1 over 0.3sec
+                                        [UIView animateWithDuration:0.3
+                                                         animations:^{
+                                                             weakSelf.detailImageView.alpha = 1.0;
+                                                         }];
+                                    }
+                                    else {
+                                        weakSelf.detailImageView.image = image;
+                                    }
+                                } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
 }
 
 - (void)updateLikeCountLabel {
@@ -128,11 +133,10 @@
 
 - (IBAction)didTapLikeButton:(id)sender {
     [self.delegate didTapLikeInDetailViewWithCompletion:^(BOOL succeeded, NSError * _Nullable error){
-        
-            self.likeButton.selected = !self.likeButton.selected;
-            [self updateLikeCountLabel];
+        self.likeButton.selected = !self.likeButton.selected;
+        [self updateLikeCountLabel];
     }];
-
+    
 }
 
 

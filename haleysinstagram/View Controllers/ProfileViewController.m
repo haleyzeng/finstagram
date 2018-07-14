@@ -58,7 +58,7 @@
     else { // not self
         self.photoTapGesture.enabled = NO;
     }
-
+    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
@@ -69,21 +69,24 @@
     NSURL *profilePhotoURL = [NSURL URLWithString:self.userProfile.profileImage.url];
     NSURLRequest *profilePicRequest = [NSURLRequest requestWithURL:profilePhotoURL];
     __weak ProfileViewController *weakSelf = self;
-    [self.profileImageView setImageWithURLRequest:profilePicRequest placeholderImage:nil success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
-        // imageResponse will be nil if the image is cached
-        if (imageResponse) {
-            weakSelf.profileImageView.alpha = 0.0;
-            weakSelf.profileImageView.image = image;
-            
-            [UIView animateWithDuration:0.3 animations:^{
-                weakSelf.profileImageView.alpha = 1.0;
-            }];
-        }
-        else {
-            weakSelf.profileImageView.image = image;
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
-
+    [self.profileImageView setImageWithURLRequest:profilePicRequest
+                                 placeholderImage:nil
+                                          success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                              // imageResponse will be nil if the image is cached
+                                              if (imageResponse) {
+                                                  weakSelf.profileImageView.alpha = 0.0;
+                                                  weakSelf.profileImageView.image = image;
+                                                  
+                                                  [UIView animateWithDuration:0.3
+                                                                   animations:^{
+                                                                       weakSelf.profileImageView.alpha = 1.0;
+                                                                   }];
+                                              }
+                                              else {
+                                                  weakSelf.profileImageView.image = image;
+                                              }
+                                          } failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {}];
+    
 }
 
 - (void)adjustCollectionViewCellSize {
@@ -98,8 +101,7 @@
                          (layout.minimumInteritemSpacing *
                           (imagesPerRow - 1)
                           )
-                         )
-    / imagesPerRow;
+                         ) / imagesPerRow;
     
     CGFloat itemHeight = itemWidth;
     
@@ -135,8 +137,11 @@
 
 #pragma mark - UICollectionViewDelegate
 
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ProfileCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"profileCollectionViewCell" forIndexPath:indexPath];
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView
+                                   cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ProfileCollectionViewCell *cell = [collectionView
+                                       dequeueReusableCellWithReuseIdentifier:@"profileCollectionViewCell"
+                                       forIndexPath:indexPath];
     Post *post = self.posts[indexPath.item];
     cell.post = post;
     return cell;
@@ -154,30 +159,49 @@
     imagePickerVC.allowsEditing = YES;
     
     // create action sheet style alert so user can pick
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Change profile picture" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:nil
+                                message:@"Change profile picture"
+                                preferredStyle:UIAlertControllerStyleActionSheet];
     
     // if camera is available, add the option to action sheet
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-         UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Take a photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            // open camera
-            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-            [self presentViewController:imagePickerVC animated:YES completion:nil];
-        }];
-         [alert addAction:camera];
-     }
+        UIAlertAction *camera = [UIAlertAction
+                                 actionWithTitle:@"Take a photo"
+                                 style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * _Nonnull action) {
+                                     // open camera
+                                     imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                     [self presentViewController:imagePickerVC
+                                                        animated:YES
+                                                      completion:nil];
+                                 }];
+        [alert addAction:camera];
+    }
     
-    UIAlertAction *library = [UIAlertAction actionWithTitle:@"Choose from library" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        // open photo library
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [self presentViewController:imagePickerVC animated:YES completion:nil];
-        }];
-        
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    UIAlertAction *library = [UIAlertAction
+                              actionWithTitle:@"Choose from library"
+                              style:UIAlertActionStyleDefault
+                              handler:^(UIAlertAction * _Nonnull action) {
+                                  // open photo library
+                                  imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                  [self presentViewController:imagePickerVC
+                                                     animated:YES
+                                                   completion:nil];
+                              }];
+    
+    UIAlertAction *cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleCancel
+                             handler:^(UIAlertAction * _Nonnull action) {
+                             }];
     
     [alert addAction:library];
     [alert addAction:cancel];
-        
-    [self presentViewController:alert animated:YES completion:^{}];
+    
+    [self presentViewController:alert
+                       animated:YES
+                     completion:^{}];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
