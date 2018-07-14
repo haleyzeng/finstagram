@@ -30,6 +30,11 @@
 
 #pragma mark - Load View
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setupView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupView];
@@ -104,6 +109,7 @@
 - (void)fetchProfilePosts {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query whereKey:@"author" equalTo:self.userProfile];
+    [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     [query includeKey:@"image"];
     
